@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logoImg from "@/assets/logo.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,8 +38,12 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="h-12 w-12 rounded-full bg-blue-600 flex items-center justify-center border-2 border-blue-400/20 text-white font-bold text-xl">
-            AI
+          <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center border-2 border-blue-400/20 overflow-hidden">
+            <img 
+              src={logoImg} 
+              alt="Asha Interiors Logo" 
+              className="w-full h-full object-cover scale-110"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-xl leading-none text-white">
