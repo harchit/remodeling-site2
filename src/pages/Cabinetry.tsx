@@ -5,16 +5,15 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import fiberglassPoolImg from "@/assets/fiberglass-pool.jpg";
 
-const VinylPools = () => {
+const Cabinetry = () => {
   const benefits = [
-    "Highly customizable shapes and sizes",
-    "Smooth, non-porous surface that prevents algae",
-    "Cost-effective installation compared to concrete",
-    "Softer feel on feet compared to rough concrete",
-    "Wide variety of liner patterns and colors",
-    "Faster construction time"
+    "Highly customizable layouts and storage solutions",
+    "Premium solid wood doors and durable face frames",
+    "Soft-close hinges and under-mount drawer slides",
+    "Wide variety of paint colors, stains, and door styles",
+    "Maximize kitchen storage with smart pull-outs and organizers",
+    "Increases home value and daily functionality"
   ];
 
   return (
@@ -25,10 +24,10 @@ const VinylPools = () => {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col gap-6">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
-              Custom <span className="text-blue-600">Vinyl Liner</span> Pools
+              Custom <span className="text-blue-600">Kitchen Cabinetry</span>
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Vinyl liner pools offer unparalleled versatility and affordability without sacrificing beauty. Perfect for families looking to create a customized backyard oasis quickly and cost-effectively in Houston, Dallas, or San Antonio.
+              Custom cabinetry offers unparalleled versatility and storage without sacrificing beauty. Perfect for families looking to create a highly organized and stunning kitchen in Houston, Dallas, or San Antonio.
             </p>
             <div className="flex gap-4 pt-4">
               <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 py-6">
@@ -38,8 +37,8 @@ const VinylPools = () => {
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
             <img 
-              src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=1000" 
-              alt="Beautiful Vinyl Pool" 
+              src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80&w=1000" 
+              alt="Beautiful Custom Kitchen Cabinets" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -49,21 +48,21 @@ const VinylPools = () => {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Why Vinyl?</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">The Benefits of Vinyl Liner Pools</h3>
+            <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Why Custom Cabinets?</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">The Benefits of Custom Cabinetry</h3>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-3xl overflow-hidden shadow-lg h-full">
                <img 
-                src={fiberglassPoolImg} 
-                alt="Vinyl Pool Patterns" 
+                src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=800" 
+                alt="Custom Cabinetry Details" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="flex flex-col gap-6">
               <p className="text-slate-600 leading-relaxed text-lg">
-                Modern vinyl liners are incredibly durable and come in a vast array of colors and patterns, allowing you to mimic the look of expensive tiles or natural stone. They are custom-fitted to your pool's exact specifications, meaning you can have a pool in virtually any shape or size.
+                Modern custom cabinets are built to fit your kitchen's exact dimensions, eliminating wasted space and filler panels. Choose from a vast array of colors, stains, and door styles to match your home's aesthetic perfectly.
               </p>
               <ul className="space-y-4">
                 {benefits.map((benefit, idx) => (
@@ -80,9 +79,9 @@ const VinylPools = () => {
 
       <section className="py-24 bg-blue-600 text-white text-center">
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-8">
-          <h2 className="text-4xl font-bold">Start Designing Your Vinyl Pool</h2>
+          <h2 className="text-4xl font-bold">Start Designing Your Custom Cabinets</h2>
           <p className="text-blue-100 text-lg">
-            Our Texas team is ready to help you choose the perfect shape, size, and liner pattern for your backyard.
+            Our Texas team is ready to help you choose the perfect wood, finish, and layout for your kitchen.
           </p>
           <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-slate-100 rounded-full px-10 py-8 text-xl">
             <a href="tel:6479655067" className="flex items-center gap-3">
@@ -98,4 +97,4 @@ const VinylPools = () => {
   );
 };
 
-export default VinylPools;
+export default Cabinetry;

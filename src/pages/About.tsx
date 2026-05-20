@@ -1,14 +1,14 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ShieldCheck, Users, Award, MapPin, Phone, ArrowRight } from "lucide-react";
+import { ShieldCheck, Users, Award, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const About = () => {
   const values = [
     {
       title: "Quality Craftsmanship",
-      description: "We use only premium materials and proven construction techniques to ensure your pool lasts a lifetime in the Texas climate.",
+      description: "We use only premium materials and proven installation techniques to ensure your kitchen lasts a lifetime in your Texas home.",
       icon: <ShieldCheck className="h-8 w-8 text-blue-600" />,
     },
     {
@@ -32,9 +32,9 @@ const About = () => {
         <div className="absolute inset-0 bg-slate-900/10" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl font-extrabold mb-6">About <span className="text-blue-200">Bluestone</span></h1>
+            <h1 className="text-5xl font-extrabold mb-6">About <span className="text-blue-200">Asha Interiors</span></h1>
             <p className="text-xl text-blue-100 leading-relaxed">
-              We are Texas's trusted custom pool builders, dedicated to transforming backyards across Houston, Dallas, and San Antonio into breathtaking luxury retreats.
+              We are Texas's trusted custom kitchen remodelers, dedicated to transforming culinary spaces across Houston, Dallas, and San Antonio into breathtaking luxury retreats.
             </p>
           </div>
         </div>
@@ -45,14 +45,12 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div className="flex flex-col gap-8">
             <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm">Our Story</h2>
-            <h3 className="text-4xl font-bold text-slate-900">Building Oasis Destinations in Texas</h3>
+            <h3 className="text-4xl font-bold text-slate-900">Building Culinary Masterpieces in Texas</h3>
             <p className="text-slate-600 leading-relaxed">
-              At Bluestone Pool Construction, we understand that a swimming pool is more than just water—it's a lifestyle enhancement, a gathering place for family, and a centerpiece for entertaining. 
-              We started with a vision to raise the standard of pool construction in Texas.
+              At Asha Interiors, we understand that a kitchen is more than just a place to cook—it's the heart of the home, a gathering place for family, and a centerpiece for entertaining. We started with a vision to raise the standard of kitchen remodeling in Texas.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              Whether you choose an affordable and versatile vinyl liner, a low-maintenance fiberglass shell, or a fully custom gunite concrete pool, our team handles the entire process with meticulous attention to detail. 
-              From the initial 3D design rendering to the final landscaping touches, we are with you every step of the way.
+              Whether you choose custom cabinetry, premium countertops, or a full kitchen remodel, our team handles the entire process with meticulous attention to detail. From the initial 3D design rendering to the final hardware installation, we are with you every step of the way.
             </p>
             <div className="grid sm:grid-cols-2 gap-6 pt-4">
               <div className="flex items-center gap-4">
@@ -78,8 +76,8 @@ const About = () => {
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl aspect-square">
               <img 
-                src="https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&q=80&w=1000" 
-                alt="Bluestone Pool Construction Project" 
+                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=1000" 
+                alt="Asha Interiors Kitchen Remodeling Project" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -96,8 +94,8 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Our Commitment</h2>
-            <h3 className="text-4xl font-bold text-slate-900 mb-6">The Bluestone Standard</h3>
-            <p className="text-slate-600">We don't just build pools; we build relationships. Our core values reflect our dedication to delivering the highest quality product and experience.</p>
+            <h3 className="text-4xl font-bold text-slate-900 mb-6">The Asha Interiors Standard</h3>
+            <p className="text-slate-600">We don't just remodel kitchens; we build relationships. Our core values reflect our dedication to delivering the highest quality product and experience.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -117,9 +115,9 @@ const About = () => {
       {/* CTA Section */}
       <section className="py-24 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-8">
-          <h2 className="text-4xl font-bold">Ready to Dive Into Luxury?</h2>
+          <h2 className="text-4xl font-bold">Ready to Design Your Dream Kitchen?</h2>
           <p className="text-slate-400 text-lg max-w-2xl">
-            Contact Bluestone Pool Construction today to schedule your design consultation in Houston, Dallas, or San Antonio.
+            Contact Asha Interiors today to schedule your design consultation in Houston, Dallas, or San Antonio.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 py-8 text-xl">

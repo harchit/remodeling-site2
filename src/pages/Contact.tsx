@@ -42,8 +42,8 @@ const Contact = () => {
     },
     {
       title: "Email Address",
-      content: "info@bluestonepoolconstruction.com",
-      link: "mailto:info@bluestonepoolconstruction.com",
+      content: "info@ashainteriors.com",
+      link: "mailto:info@ashainteriors.com",
       icon: <Mail className="h-6 w-6 text-blue-600" />,
     },
     {
@@ -62,9 +62,9 @@ const Contact = () => {
         <div className="absolute inset-0 bg-blue-600/10" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl font-extrabold mb-6">Contact <span className="text-blue-400">Bluestone</span></h1>
+            <h1 className="text-5xl font-extrabold mb-6">Contact <span className="text-blue-400">Asha Interiors</span></h1>
             <p className="text-xl text-slate-300 leading-relaxed">
-              Ready to build your dream pool? Reach out to our design and construction experts to schedule your consultation in Houston, Dallas, or San Antonio.
+              Ready to build your dream kitchen? Reach out to our design and remodeling experts to schedule your consultation in Houston, Dallas, or San Antonio.
             </p>
           </div>
         </div>
@@ -77,9 +77,9 @@ const Contact = () => {
           <div className="flex flex-col gap-12">
             <div className="flex flex-col gap-6">
               <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm">Get In Touch</h2>
-              <h3 className="text-4xl font-bold text-slate-900">Start Your Backyard Transformation</h3>
+              <h3 className="text-4xl font-bold text-slate-900">Start Your Kitchen Transformation</h3>
               <p className="text-slate-600 leading-relaxed">
-                Whether you're interested in a custom vinyl, fiberglass, or concrete pool, our team is ready to answer your questions and provide a detailed estimate.
+                Whether you're interested in custom cabinetry, premium countertops, or a full kitchen remodel, our team is ready to answer your questions and provide a detailed estimate.
               </p>
             </div>
 
@@ -105,7 +105,7 @@ const Contact = () => {
             
             <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 mt-auto">
                 <h4 className="font-bold text-slate-900 text-lg mb-2">Schedule a Free Consultation</h4>
-                <p className="text-slate-600 mb-6">We'll visit your property, discuss your vision, and provide a comprehensive plan for your new pool.</p>
+                <p className="text-slate-600 mb-6">We'll visit your property, discuss your vision, and provide a comprehensive plan for your new kitchen.</p>
                 <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6">
                     <a href="tel:6479655067" className="flex items-center justify-center gap-2">
                         <Phone className="h-4 w-4" />
@@ -124,7 +124,7 @@ const Contact = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-slate-900">Thank You!</h3>
                 <p className="text-slate-600 text-lg max-w-sm">
-                  Your inquiry has been sent successfully. One of our pool design specialists will contact you shortly.
+                  Your inquiry has been sent successfully. One of our kitchen design specialists will contact you shortly.
                 </p>
                 <Button 
                   onClick={() => setIsSubmitted(false)}
@@ -162,16 +162,16 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="service">Pool Interest</Label>
+                  <Label htmlFor="service">Kitchen Interest</Label>
                   <select 
                     id="service" 
                     className="w-full h-12 px-4 rounded-xl border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     required
                   >
-                    <option value="">Select pool type</option>
-                    <option value="vinyl">Vinyl Liner Pool</option>
-                    <option value="fiberglass">Fiberglass Pool</option>
-                    <option value="concrete">Custom Concrete Pool</option>
+                    <option value="">Select service type</option>
+                    <option value="cabinetry">Custom Cabinetry</option>
+                    <option value="countertops">Premium Countertops</option>
+                    <option value="remodel">Full Kitchen Remodel</option>
                     <option value="unsure">Not Sure Yet</option>
                   </select>
                 </div>
@@ -180,7 +180,7 @@ const Contact = () => {
                   <Label htmlFor="message">Project Details</Label>
                   <Textarea 
                     id="message" 
-                    placeholder="Tell us about your backyard and what you're looking for..." 
+                    placeholder="Tell us about your kitchen and what you're looking for..." 
                     required 
                     className="rounded-xl min-h-[150px] p-4"
                   />

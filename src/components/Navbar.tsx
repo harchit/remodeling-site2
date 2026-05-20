@@ -19,9 +19,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Vinyl Pools", path: "/vinyl-pools" },
-    { name: "Fiberglass", path: "/fiberglass-pools" },
-    { name: "Concrete", path: "/concrete-pools" },
+    { name: "Cabinetry", path: "/cabinetry" },
+    { name: "Countertops", path: "/countertops" },
+    { name: "Full Remodels", path: "/full-remodels" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
@@ -37,13 +37,15 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <img src="/logo.png" alt="Bluestone Pool Construction Logo" className="h-12 w-12 rounded-full object-cover border-2 border-blue-600/20" />
+          <div className="h-12 w-12 rounded-full bg-blue-600 flex items-center justify-center border-2 border-blue-400/20 text-white font-bold text-xl">
+            AI
+          </div>
           <div className="flex flex-col">
             <span className="font-bold text-xl leading-none text-white">
-              Bluestone
+              Asha
             </span>
             <span className="text-xs font-medium tracking-wider uppercase text-blue-400">
-              Pool Construction
+              Interiors
             </span>
           </div>
         </Link>

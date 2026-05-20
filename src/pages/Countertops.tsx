@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const FiberglassPools = () => {
+const Countertops = () => {
   const benefits = [
-    "Rapid installation time (often weeks, not months)",
-    "Extremely low maintenance and chemical usage",
-    "Non-abrasive, smooth gel-coat finish",
-    "Built-in steps, seating, and tanning ledges",
-    "Highly durable and flexible shell that resists cracking",
-    "Algae-resistant surface"
+    "Stunning selection of quartz, granite, marble, and quartzite",
+    "Extremely durable, scratch-resistant, and heat-resistant surfaces",
+    "Non-porous options that resist stains and bacteria",
+    "Custom edge profiles to match your kitchen's style",
+    "Professional laser-template measurement and seamless installation",
+    "Easy to clean and maintain for decades"
   ];
 
   return (
@@ -22,10 +22,10 @@ const FiberglassPools = () => {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col gap-6">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
-              Premium <span className="text-blue-600">Fiberglass</span> Pools
+              Premium <span className="text-blue-600">Kitchen Countertops</span>
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Experience the ultimate low-maintenance swimming pool. Manufactured in climate-controlled environments, fiberglass pools offer incredible durability, a smooth finish, and the fastest installation time in Texas.
+              Experience the ultimate blend of beauty and durability. Our premium countertops offer incredible resilience, a smooth finish, and a luxurious feel for your Texas kitchen.
             </p>
             <div className="flex gap-4 pt-4">
               <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 py-6">
@@ -35,8 +35,8 @@ const FiberglassPools = () => {
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
             <img 
-              src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&q=80&w=1000" 
-              alt="Fiberglass Pool Installation" 
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000" 
+              alt="Premium Kitchen Countertops" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -46,14 +46,14 @@ const FiberglassPools = () => {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Why Fiberglass?</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">The Smart Choice for Texas Backyards</h3>
+            <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Why Premium Countertops?</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">The Smart Choice for Texas Kitchens</h3>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="flex flex-col gap-6 order-2 md:order-1">
               <p className="text-slate-600 leading-relaxed text-lg">
-                Because fiberglass pools arrive at your home fully formed, the installation process is significantly faster than concrete or vinyl. Their non-porous gel coat finish not only looks stunning but also requires fewer chemicals and less scrubbing to maintain.
+                Because countertops are the workhorse of the kitchen, choosing the right material is essential. Our premium quartz and granite options provide a non-porous, highly durable surface that resists stains, heat, and scratches while looking absolutely stunning.
               </p>
               <ul className="space-y-4">
                 {benefits.map((benefit, idx) => (
@@ -66,8 +66,8 @@ const FiberglassPools = () => {
             </div>
             <div className="rounded-3xl overflow-hidden shadow-lg h-full order-1 md:order-2">
                <img 
-                src="https://images.unsplash.com/photo-1563245455-83e4492bfdf2?auto=format&fit=crop&q=80&w=800" 
-                alt="Fiberglass Pool Design" 
+                src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800" 
+                alt="Countertop Installation Details" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -77,9 +77,9 @@ const FiberglassPools = () => {
 
       <section className="py-24 bg-slate-900 text-white text-center">
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-8">
-          <h2 className="text-4xl font-bold">Ready for a Low-Maintenance Oasis?</h2>
+          <h2 className="text-4xl font-bold">Ready for a Premium Countertop Upgrade?</h2>
           <p className="text-slate-300 text-lg">
-            Let Bluestone Pool Construction drop a beautiful fiberglass pool into your Houston, Dallas, or San Antonio backyard.
+            Let Asha Interiors install a beautiful, durable countertop in your Houston, Dallas, or San Antonio kitchen.
           </p>
           <Button asChild size="lg" className="bg-blue-600 text-white hover:bg-blue-700 rounded-full px-10 py-8 text-xl">
             <a href="tel:6479655067" className="flex items-center gap-3">
@@ -95,4 +95,4 @@ const FiberglassPools = () => {
   );
 };
 
-export default FiberglassPools;
+export default Countertops;

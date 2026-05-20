@@ -10,19 +10,21 @@ const Footer = () => {
         {/* Brand Section */}
         <div className="flex flex-col gap-6">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src="/logo.png" alt="Bluestone Logo" className="h-12 w-12 rounded-full border border-blue-400/30" />
+            <div className="h-12 w-12 rounded-full bg-blue-600 flex items-center justify-center border border-blue-400/30 text-white font-bold text-xl">
+              AI
+            </div>
             <div className="flex flex-col">
               <span className="font-bold text-xl leading-none text-white">
-                Bluestone
+                Asha
               </span>
               <span className="text-xs font-medium tracking-wider uppercase text-blue-400">
-                Pool Construction
+                Interiors
               </span>
             </div>
           </Link>
           <p className="text-sm leading-relaxed">
-            Premium custom pool builders serving Houston, Dallas, and San Antonio. 
-            We turn your backyard dreams into reality with expert craftsmanship.
+            Premium custom kitchen remodeling serving Houston, Dallas, and San Antonio. 
+            We turn your culinary dreams into reality with expert craftsmanship.
           </p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-blue-400 transition-colors"><Facebook className="h-5 w-5" /></a>
@@ -43,11 +45,11 @@ const Footer = () => {
 
         {/* Services */}
         <div className="flex flex-col gap-6">
-          <h3 className="text-white font-bold text-lg">Our Pools</h3>
+          <h3 className="text-white font-bold text-lg">Our Services</h3>
           <ul className="flex flex-col gap-3 text-sm">
-            <li><Link to="/vinyl-pools" className="hover:text-blue-400 transition-colors">Vinyl Liner Pools</Link></li>
-            <li><Link to="/fiberglass-pools" className="hover:text-blue-400 transition-colors">Fiberglass Pools</Link></li>
-            <li><Link to="/concrete-pools" className="hover:text-blue-400 transition-colors">Custom Concrete Pools</Link></li>
+            <li><Link to="/cabinetry" className="hover:text-blue-400 transition-colors">Custom Cabinetry</Link></li>
+            <li><Link to="/countertops" className="hover:text-blue-400 transition-colors">Premium Countertops</Link></li>
+            <li><Link to="/full-remodels" className="hover:text-blue-400 transition-colors">Full Kitchen Remodels</Link></li>
           </ul>
         </div>
 
@@ -65,14 +67,14 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-blue-400 shrink-0" />
-              <a href="mailto:info@bluestonepoolconstruction.com" className="hover:text-blue-400 transition-colors">info@bluestonepools.com</a>
+              <a href="mailto:info@ashainteriors.com" className="hover:text-blue-400 transition-colors">info@ashainteriors.com</a>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-        <p>© {currentYear} Bluestone Pool Construction. All rights reserved.</p>
+        <p>© {currentYear} Asha Interiors. All rights reserved.</p>
         <div className="flex gap-6">
           <a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a>
