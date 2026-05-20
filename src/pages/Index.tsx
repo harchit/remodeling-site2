@@ -5,6 +5,7 @@ import { Phone, MapPin, ArrowRight, Star, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import heroKitchen from "@/assets/hero-kitchen.jpg";
 
 const Index = () => {
   const services = [
@@ -55,7 +56,7 @@ const Index = () => {
         {/* Background Image & Dark Overlay */}
         <div className="absolute inset-0 z-0 bg-slate-900">
           <img 
-            src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=2000" 
+            src={heroKitchen} 
             alt="Luxury Custom Kitchen Remodeling Background" 
             className="w-full h-full object-cover opacity-80"
           />
