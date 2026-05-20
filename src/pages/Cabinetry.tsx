@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import cabinetryImg from "@/assets/cabinetry.jpg";
 
 const Cabinetry = () => {
   const benefits = [
@@ -37,7 +38,7 @@ const Cabinetry = () => {
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
             <img 
-              src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80&w=1000" 
+              src={cabinetryImg} 
               alt="Beautiful Custom Kitchen Cabinets" 
               className="w-full h-full object-cover"
             />

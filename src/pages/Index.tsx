@@ -6,13 +6,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import heroKitchen from "@/assets/hero-kitchen.jpg";
+import cabinetryImg from "@/assets/cabinetry.jpg";
 
 const Index = () => {
   const services = [
     {
       title: "Custom Cabinetry",
       description: "Highly customizable, premium wood, soft-close hinges, and beautiful finishes to maximize your kitchen storage and style.",
-      image: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80&w=800",
+      image: cabinetryImg,
       link: "/cabinetry"
     },
     {
