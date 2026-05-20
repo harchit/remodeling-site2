@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import countertopsImg from "@/assets/countertops.jpg";
 
 const Countertops = () => {
   const benefits = [
@@ -35,7 +36,7 @@ const Countertops = () => {
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
             <img 
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000" 
+              src={countertopsImg} 
               alt="Premium Kitchen Countertops" 
               className="w-full h-full object-cover"
             />

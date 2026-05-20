@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import heroKitchen from "@/assets/hero-kitchen.jpg";
 import cabinetryImg from "@/assets/cabinetry.jpg";
+import countertopsImg from "@/assets/countertops.jpg";
 
 const Index = () => {
   const services = [
@@ -19,7 +20,7 @@ const Index = () => {
     {
       title: "Premium Countertops",
       description: "Durable, elegant, and easy to clean. Choose from quartz, granite, marble, and quartzite to elevate your kitchen's aesthetic.",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800",
+      image: countertopsImg,
       link: "/countertops"
     },
     {
