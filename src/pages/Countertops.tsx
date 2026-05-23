@@ -44,15 +44,15 @@ const Countertops = () => {
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Why Premium Countertops?</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-slate-900">The Smart Choice for Texas Kitchens</h3>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="flex flex-col gap-6 order-2 md:order-1">
+          <div className="grid md:grid-cols-2 gap-12 items-center justify-center">
+            <div className="flex flex-col gap-6 justify-center order-2 md:order-1">
               <p className="text-slate-600 leading-relaxed text-lg">
                 Because countertops are the workhorse of the kitchen, choosing the right material is essential. Our premium quartz and granite options provide a non-porous, highly durable surface that resists stains, heat, and scratches while looking absolutely stunning.
               </p>
@@ -65,7 +65,7 @@ const Countertops = () => {
                 ))}
               </ul>
             </div>
-            <div className="rounded-3xl overflow-hidden shadow-lg h-full order-1 md:order-2">
+            <div className="rounded-3xl overflow-hidden shadow-lg aspect-[4/3] w-full order-1 md:order-2">
                <img 
                 src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800" 
                 alt="Countertop Installation Details" 

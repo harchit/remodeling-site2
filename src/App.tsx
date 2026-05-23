@@ -11,6 +11,7 @@ import StickyCallButton from "./components/StickyCallButton";
 import Cabinetry from "./pages/Cabinetry";
 import Countertops from "./pages/Countertops";
 import FullRemodels from "./pages/FullRemodels";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <StickyCallButton />
         <Routes>
           <Route path="/" element={<Index />} />

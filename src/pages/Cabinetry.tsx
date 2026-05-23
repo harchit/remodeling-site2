@@ -46,22 +46,22 @@ const Cabinetry = () => {
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Why Custom Cabinets?</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-slate-900">The Benefits of Custom Cabinetry</h3>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="rounded-3xl overflow-hidden shadow-lg h-full">
+          <div className="grid md:grid-cols-2 gap-12 items-center justify-center">
+            <div className="rounded-3xl overflow-hidden shadow-lg aspect-[4/3] w-full">
                <img 
                 src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=800" 
                 alt="Custom Cabinetry Details" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 justify-center">
               <p className="text-slate-600 leading-relaxed text-lg">
                 Modern custom cabinets are built to fit your kitchen's exact dimensions, eliminating wasted space and filler panels. Choose from a vast array of colors, stains, and door styles to match your home's aesthetic perfectly.
               </p>
