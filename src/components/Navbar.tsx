@@ -46,10 +46,10 @@ const Navbar = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-xl leading-none text-white">
+            <span className="font-brand font-bold text-xl leading-none text-white">
               Asha
             </span>
-            <span className="text-xs font-medium tracking-wider uppercase text-blue-400">
+            <span className="font-brand text-xs font-medium tracking-wider uppercase text-blue-400">
               Interiors
             </span>
           </div>
