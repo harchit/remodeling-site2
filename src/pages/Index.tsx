@@ -151,7 +151,7 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/50 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
                 <div className="relative z-10 p-8 flex flex-col gap-3 transform transition-transform duration-300 group-hover:-translate-y-2">
-                  <h4 className="text-2xl font-bold text-white">{service.title}</h4>
+                  <h4 className="text-2xl text-white">{service.title}</h4>
                   <p className="text-slate-300 leading-relaxed text-sm">{service.description}</p>
                   <div className="text-blue-400 font-bold flex items-center gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:gap-3">
                     Learn More <ArrowRight className="h-4 w-4" />
