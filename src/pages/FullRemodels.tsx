@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import fullRemodelHero from "../../.dyad/media/05aad716a6ba449b31e8de6a8de53ba579feb8fd8d8f3dc813340b23510061c4.jpg";
 
 const FullRemodels = () => {
   const benefits = [
@@ -60,7 +59,7 @@ const FullRemodels = () => {
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
             <img 
-              src={fullRemodelHero} 
+              src="https://images.unsplash.com/photo-1594232319745-1d6a20c7a11d?auto=format&fit=crop&q=80&w=1000" 
               alt="Full Kitchen Remodel" 
               className="w-full h-full object-cover"
             />
