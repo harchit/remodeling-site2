@@ -17,12 +17,19 @@ const Cabinetry = () => {
     "Increases home value and daily functionality"
   ];
 
+  const questions = [
+    "Box construction (plywood vs particle board)",
+    "Hardware quality (soft-close hinges matter more than you think)",
+    "Finish durability (cheap finishes peel within years, not decades)",
+    "Installation precision (even high-end cabinets look bad if installed poorly)"
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
 
       <section className="pt-32 pb-20 bg-slate-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
           <div className="flex flex-col gap-6">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
               Custom <span className="text-blue-600">Kitchen Cabinetry</span>
@@ -30,7 +37,27 @@ const Cabinetry = () => {
             <p className="text-lg text-slate-600 leading-relaxed">
               Custom cabinetry offers unparalleled versatility and storage without sacrificing beauty. Perfect for families looking to create a highly organized and stunning kitchen in Houston, Dallas, or San Antonio.
             </p>
-            <div className="flex gap-4 pt-4">
+
+            {/* What Actually Matters Guidance */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <p className="text-slate-700 text-base leading-relaxed mb-3">
+                <span className="font-semibold text-slate-900">Not all kitchen cabinets are built the same</span> — and the differences aren't always obvious at first glance.
+              </p>
+              <p className="text-slate-600 text-sm mb-3">Here's what actually matters:</p>
+              <ul className="space-y-2 mb-3">
+                {questions.map((q, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-slate-700 text-sm">
+                    <span className="text-blue-600 font-bold mt-0.5 shrink-0">•</span>
+                    <span>{q}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                A lower quote often hides cheaper materials behind a nice door sample. Always ask for the cabinet spec sheet—not just the showroom display.
+              </p>
+            </div>
+
+            <div className="flex gap-4 pt-2">
               <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 py-6">
                 <Link to="/contact">Get a Free Estimate</Link>
               </Button>
