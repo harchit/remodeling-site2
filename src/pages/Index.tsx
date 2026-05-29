@@ -73,7 +73,7 @@ const Index = () => {
             </div>
             
             <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1]">
-              Design Your Dream <span className="font-['Playfair_Display_Italic'] italic font-normal text-yellow-400">Kitchen Oasis</span>
+              Design Your Dream <span className="font-['Playfair_Display_Italic'] italic font-normal text-blue-600">Kitchen Oasis</span>
             </h1>
             
             <p className="text-lg lg:text-xl text-slate-200 max-w-xl leading-relaxed mt-2">
