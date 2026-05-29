@@ -65,6 +65,14 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent" />
         </div>
 
+        {/* Transparent decorative background */}
+        <div 
+          className="absolute inset-0 z-[1] bg-repeat bg-[length:200px_200px] opacity-[0.08] pointer-events-none"
+          style={{ 
+            backgroundImage: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==")`,
+          }}
+        />
+
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
           <div className="flex flex-col gap-6 max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider w-fit">
