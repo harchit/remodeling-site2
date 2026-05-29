@@ -84,9 +84,9 @@ const FullRemodels = () => {
             Speak with our custom kitchen designers to start planning your perfect culinary sanctuary.
           </p>
           <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-slate-100 rounded-full px-10 py-8 text-xl">
-            <a href="tel:6479655067" className="flex items-center gap-3">
+            <a href="tel:2819326994" className="flex items-center gap-3">
               <Phone className="h-6 w-6" />
-              Call (647) 965-5067
+              Call (281) 932-6994
             </a>
           </Button>
         </div>

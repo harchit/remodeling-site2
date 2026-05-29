@@ -83,9 +83,9 @@ const Index = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 mt-6">
               <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 py-6 text-lg shadow-lg shadow-blue-900/20">
-                <a href="tel:6479655067" className="flex items-center gap-2">
+                <a href="tel:2819326994" className="flex items-center gap-2">
                   <Phone className="h-5 w-5" />
-                  Call (647) 965-5067
+                  Call (281) 932-6994
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="rounded-full px-8 py-6 text-lg border-2 border-white text-white hover:bg-white hover:text-slate-900 transition-colors bg-transparent">
@@ -261,9 +261,9 @@ const Index = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 py-8 text-xl shadow-xl shadow-blue-900/20">
-                  <a href="tel:6479655067" className="flex items-center gap-3">
+                  <a href="tel:2819326994" className="flex items-center gap-3">
                     <Phone className="h-6 w-6" />
-                    (647) 965-5067
+                    (281) 932-6994
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-8 text-xl border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white transition-all bg-transparent">

@@ -121,9 +121,9 @@ const About = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 py-8 text-xl">
-              <a href="tel:6479655067" className="flex items-center gap-3">
+              <a href="tel:2819326994" className="flex items-center gap-3">
                 <Phone className="h-6 w-6" />
-                (647) 965-5067
+                (281) 932-6994
               </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-8 text-xl border-2 border-white text-white hover:bg-white hover:text-slate-900 transition-all">

@@ -36,8 +36,8 @@ const Contact = () => {
     },
     {
       title: "Phone Number",
-      content: "(647) 965-5067",
-      link: "tel:6479655067",
+      content: "(281) 932-6994",
+      link: "tel:2819326994",
       icon: <Phone className="h-6 w-6 text-blue-600" />,
     },
     {
@@ -107,7 +107,7 @@ const Contact = () => {
                 <h4 className="font-bold text-slate-900 text-lg mb-2">Schedule a Free Consultation</h4>
                 <p className="text-slate-600 mb-6">We'll visit your property, discuss your vision, and provide a comprehensive plan for your new kitchen.</p>
                 <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6">
-                    <a href="tel:6479655067" className="flex items-center justify-center gap-2">
+                    <a href="tel:2819326994" className="flex items-center justify-center gap-2">
                         <Phone className="h-4 w-4" />
                         Call Now
                     </a>
@@ -158,7 +158,7 @@ const Contact = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="(647) 965-5067" required className="rounded-xl py-6" />
+                  <Input id="phone" type="tel" placeholder="(281) 932-6994" required className="rounded-xl py-6" />
                 </div>
 
                 <div className="space-y-2">

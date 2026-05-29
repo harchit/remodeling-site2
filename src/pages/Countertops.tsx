@@ -83,9 +83,9 @@ const Countertops = () => {
             Let Asha Interiors install a beautiful, durable countertop in your Houston, Dallas, or San Antonio kitchen.
           </p>
           <Button asChild size="lg" className="bg-blue-600 text-white hover:bg-blue-700 rounded-full px-10 py-8 text-xl">
-            <a href="tel:6479655067" className="flex items-center gap-3">
+            <a href="tel:2819326994" className="flex items-center gap-3">
               <Phone className="h-6 w-6" />
-              Call (647) 965-5067
+              Call (281) 932-6994
             </a>
           </Button>
         </div>
