@@ -17,13 +17,6 @@ const FullRemodels = () => {
     "Substantial increase in overall home equity"
   ];
 
-  const cabinetQuestions = [
-    "Box construction (plywood vs particle board)",
-    "Hardware quality (soft-close hinges matter more than you think)",
-    "Finish durability (cheap finishes peel within years, not decades)",
-    "Installation precision (even high-end cabinets look bad if installed poorly)"
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -38,21 +31,24 @@ const FullRemodels = () => {
               When you want complete freedom of design, a full kitchen remodel is the answer. Create a true culinary masterpiece in your Houston, Dallas, or San Antonio home.
             </p>
 
-            {/* Cabinet Guidance Box */}
+            {/* Layout Guidance Box */}
             <div className="bg-white rounded-2xl border border-slate-200 p-6">
               <p className="text-slate-700 text-base leading-relaxed mb-3">
-                <span className="font-semibold text-slate-900">Not all kitchen cabinets are built the same</span> — and the differences aren't always obvious at first glance. Here's what actually matters:
+                <span className="font-semibold text-slate-900">Most homeowners think a small kitchen is the problem</span> — but in many cases, it's the layout.
               </p>
-              <ul className="space-y-2 mb-3">
-                {cabinetQuestions.map((q, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-slate-700 text-sm">
-                    <span className="text-blue-600 font-bold mt-0.5 shrink-0">•</span>
-                    <span>{q}</span>
-                  </li>
-                ))}
+              <p className="text-slate-600 text-sm mb-3">
+                Here are 3 common mistakes that make kitchens feel cramped:
+              </p>
+              <ul className="space-y-2 mb-3 list-decimal list-inside text-slate-700 text-sm">
+                <li>Bad triangle flow (sink, stove, fridge too far apart or blocked)</li>
+                <li>Islands that are too large for the room</li>
+                <li>Upper cabinets that interrupt sightlines and natural light</li>
               </ul>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                A lower quote often hides cheaper materials behind a nice door sample. Always ask for the cabinet spec sheet—not just the showroom display.
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                A well-designed kitchen isn't just about square footage—it's about movement. If you can't cook without constantly crossing paths or opening blocked doors, the design is working against you.
+              </p>
+              <p className="text-blue-600 font-semibold text-sm">
+                When planning a remodel, always prioritize workflow before aesthetics.
               </p>
             </div>
 
