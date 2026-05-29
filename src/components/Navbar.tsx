@@ -49,7 +49,7 @@ const Navbar = () => {
             <span className="font-brand font-normal text-xl leading-none text-white">
               Asha
             </span>
-            <span className="font-['Playfair_Display_Italic'] italic font-normal text-blue-600 text-base tracking-wider">
+            <span className="font-['Playfair_Display_Italic'] italic font-normal text-blue-400 text-base tracking-wider">
               Interiors
             </span>
           </div>
