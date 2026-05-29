@@ -27,7 +27,7 @@ const Countertops = () => {
       <Navbar />
 
       <section className="pt-32 pb-20 bg-slate-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
           <div className="flex flex-col gap-6">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
               Premium <span className="text-blue-600">Kitchen Countertops</span>
@@ -35,7 +35,28 @@ const Countertops = () => {
             <p className="text-lg text-slate-600 leading-relaxed">
               Experience the ultimate blend of beauty and durability. Our premium countertops offer incredible resilience, a smooth finish, and a luxurious feel for your Texas kitchen.
             </p>
-            <div className="flex gap-4 pt-4">
+
+            {/* Material Selection Guidance */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <p className="text-slate-700 text-base leading-relaxed mb-3">
+                <span className="font-semibold text-slate-900">Choosing the right material</span> — Most homeowners choose based on appearance.
+                But <span className="font-semibold text-blue-600">performance matters more</span>.
+              </p>
+              <p className="text-slate-600 text-sm mb-3">Ask these questions before choosing:</p>
+              <ul className="space-y-2 mb-3">
+                {questions.map((q, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-slate-700 text-sm">
+                    <span className="text-blue-600 font-bold mt-0.5 shrink-0">•</span>
+                    <span>{q}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                For most busy households, engineered quartz offers the best balance of durability and maintenance—but the right choice depends on lifestyle, not trends.
+              </p>
+            </div>
+
+            <div className="flex gap-4 pt-2">
               <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 py-6">
                 <Link to="/contact">Get a Free Estimate</Link>
               </Button>
@@ -78,40 +99,6 @@ const Countertops = () => {
                 alt="Countertop Installation Details" 
                 className="w-full h-full object-cover"
               />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Material Selection Guidance Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4 text-center">Choosing the Right Material</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center">Performance Over Appearances</h3>
-            
-            <div className="bg-white rounded-3xl shadow-lg p-10 md:p-14 flex flex-col gap-6">
-              <p className="text-slate-700 text-lg leading-relaxed">
-                Quartz, granite, marble, butcher block—most homeowners choose based on appearance.<br />
-                But <span className="font-bold text-slate-900">performance matters more</span>.
-              </p>
-              
-              <p className="text-slate-700 text-lg leading-relaxed">
-                Ask these questions before choosing:
-              </p>
-              
-              <ul className="space-y-3 pl-2">
-                {questions.map((q, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-slate-700 text-lg">
-                    <span className="text-blue-600 font-bold mt-0.5">•</span>
-                    <span>{q}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <p className="text-slate-700 text-lg leading-relaxed mt-4">
-                For most busy households, engineered quartz offers the best balance of durability and maintenance—but the right choice depends on lifestyle, not trends.
-              </p>
             </div>
           </div>
         </div>
