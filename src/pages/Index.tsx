@@ -72,8 +72,8 @@ const Index = () => {
               Serving Houston, Dallas & San Antonio
             </div>
             
-            <h1 className="text-5xl lg:text-7xl text-white leading-[1.1] font-['Playfair_Display_Italic'] italic">
-              Design Your Dream <span className="text-yellow-400">Kitchen Oasis</span>
+            <h1 className="text-5xl lg:text-7xl text-white leading-[1.1]">
+              Design Your Dream <span className="font-['Playfair_Display_Italic'] italic text-yellow-400">Kitchen Oasis</span>
             </h1>
             
             <p className="text-lg lg:text-xl text-slate-200 max-w-xl leading-relaxed mt-2">
