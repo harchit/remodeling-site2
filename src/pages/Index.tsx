@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import heroKitchen from "@/assets/hero-kitchen.jpg";
 import cabinetryImg from "@/assets/cabinetry.jpg";
 import countertopsImg from "@/assets/countertops.jpg";
+import servicesBg from "@/assets/services-bg.jpg";
 
 const Index = () => {
   const services = [
@@ -130,8 +131,18 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="pt-12 pb-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="services" className="relative pt-12 pb-24 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={servicesBg} 
+            alt="" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-white/80" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-blue-600 font-bold uppercase tracking-widest text-xs mb-3">Our Expertise</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Choose Your Perfect Remodel</h3>
