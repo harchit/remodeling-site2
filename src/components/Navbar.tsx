@@ -49,7 +49,7 @@ const Navbar = () => {
             <span className="font-brand font-bold text-xl leading-none text-white">
               Asha
             </span>
-            <span className="font-brand text-xs font-medium tracking-wider uppercase text-blue-400">
+            <span className="font-brand italic font-bold text-xs tracking-wider uppercase text-blue-400">
               Interiors
             </span>
           </div>
