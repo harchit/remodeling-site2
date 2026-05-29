@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import fullRemodelHero from ".dyad/media/05aad716a6ba449b31e8de6a8de53ba579feb8fd8d8f3dc813340b23510061c4.jpg";
+import fullRemodelHero from "../../.dyad/media/05aad716a6ba449b31e8de6a8de53ba579feb8fd8d8f3dc813340b23510061c4.jpg";
 
 const FullRemodels = () => {
   const benefits = [
