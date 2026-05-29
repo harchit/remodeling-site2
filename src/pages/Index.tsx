@@ -62,7 +62,6 @@ const Index = () => {
             alt="Luxury Custom Kitchen Remodeling Background" 
             className="w-full h-full object-cover opacity-80"
           />
-          {/* Gradient that is darker on the left to make text legible, but overall more transparent */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent" />
         </div>
 
@@ -74,7 +73,7 @@ const Index = () => {
             </div>
             
             <h1 className="text-5xl lg:text-7xl font-extrabold text-white leading-[1.1]">
-              Design Your Dream <span className="text-blue-400">Kitchen Oasis</span>
+              Design Your Dream <span className="font-['Playfair_Display'] italic text-blue-400">Kitchen Oasis</span>
             </h1>
             
             <p className="text-lg lg:text-xl text-slate-200 max-w-xl leading-relaxed mt-2">
@@ -146,16 +145,11 @@ const Index = () => {
                 to={service.link} 
                 className="group relative h-[450px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-end"
               >
-                {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   style={{ backgroundImage: `url(${service.image})` }}
                 />
-                
-                {/* Dark Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/50 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
-                
-                {/* Content */}
                 <div className="relative z-10 p-8 flex flex-col gap-3 transform transition-transform duration-300 group-hover:-translate-y-2">
                   <h4 className="text-2xl font-bold text-white">{service.title}</h4>
                   <p className="text-slate-300 leading-relaxed text-sm">{service.description}</p>
