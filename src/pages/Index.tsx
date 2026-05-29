@@ -139,7 +139,7 @@ const Index = () => {
             alt="" 
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-white/80" />
+          <div className="absolute inset-0 bg-white/60" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
