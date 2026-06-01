@@ -27,7 +27,7 @@ const Apply = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Client-side validation
+
     if (!fullName.trim()) {
       showError("Please enter your full name.");
       return;
@@ -68,7 +68,6 @@ const Apply = () => {
 
     setIsSubmitting(true);
 
-    // Build FormData
     const formData = new FormData();
     formData.append("_captcha", "false");
     formData.append("_subject", "New Kitchen Remodeler Application - Asha Interiors");
@@ -118,7 +117,6 @@ const Apply = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Header */}
       <section className="pt-24 pb-12 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-600/10" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -134,11 +132,9 @@ const Apply = () => {
         </div>
       </section>
 
-      {/* Application Form */}
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-6">
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-10">
-            {/* Question 1: Average Project Value */}
             <div className="space-y-4">
               <Label className="text-lg font-semibold text-slate-900 block">
                 What is your average kitchen remodel project value?
@@ -168,7 +164,6 @@ const Apply = () => {
               </RadioGroup>
             </div>
 
-            {/* Question 2: Solo / Team */}
             <div className="space-y-4">
               <Label className="text-lg font-semibold text-slate-900 block">
                 Are you solo or have a team?
@@ -206,7 +201,6 @@ const Apply = () => {
               )}
             </div>
 
-            {/* Question 3: Experience Years */}
             <div className="space-y-3">
               <Label htmlFor="experienceYears" className="text-lg font-semibold text-slate-900 block">
                 How many years of kitchen remodeling experience do you have?
@@ -222,7 +216,6 @@ const Apply = () => {
               />
             </div>
 
-            {/* Question 4: Cost Estimate */}
             <div className="space-y-3">
               <Label className="text-lg font-semibold text-slate-900 block">
                 Scenario: You just finished an estimate with a client who wants a kitchen remodel. Would you be able to accurately calculate material and labor costs that same day?
@@ -248,7 +241,6 @@ const Apply = () => {
               </RadioGroup>
             </div>
 
-            {/* Question 5: Blueprints */}
             <div className="space-y-3">
               <Label className="text-lg font-semibold text-slate-900 block">
                 Are you comfortable designing your own blueprints/designs for clients?
@@ -274,7 +266,6 @@ const Apply = () => {
               </RadioGroup>
             </div>
 
-            {/* Contact Information */}
             <div className="space-y-6">
               <h2 className="text-xl font-bold text-slate-900">Your Contact Information</h2>
               <div className="space-y-3">
@@ -323,7 +314,6 @@ const Apply = () => {
               </div>
             </div>
 
-            {/* Disclaimer */}
             <div className="bg-amber-50 border border-amber-200 rounded-xl px-3 py-6 space-y-3">
               <div>
                 <h3 className="font-bold text-amber-900 text-lg">READ BEFORE APPLYING:</h3>
@@ -343,7 +333,6 @@ const Apply = () => {
                 </p>
               </div>
 
-              {/* Agree checkbox */}
               <div className="flex items-center space-x-2 pt-2">
                 <Checkbox
                   id="agreeTerms"
@@ -357,7 +346,6 @@ const Apply = () => {
               </div>
             </div>
 
-            {/* Submit */}
             <Button
               type="submit"
               disabled={isSubmitting || !agreeToTerms}
@@ -379,7 +367,6 @@ const Apply = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-24 bg-slate-900 text-white text-center">
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-8">
           <h2 className="text-4xl font-bold">Questions? Call Our Hiring Team</h2>
