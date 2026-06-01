@@ -41,14 +41,14 @@ const Apply = () => {
       <Navbar />
 
       {/* Header */}
-      <section className="pt-32 pb-20 bg-slate-900 text-white relative overflow-hidden">
+      <section className="pt-24 pb-12 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-600/10" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl font-extrabold mb-6">
+            <h1 className="text-4xl font-extrabold mb-4">
               Join the <span className="text-blue-400">Asha Interiors</span> Team
             </h1>
-            <p className="text-xl text-slate-300 leading-relaxed">
+            <p className="text-lg text-slate-300 leading-relaxed">
               We're hiring experienced kitchen remodelers in Houston, Dallas, and San Antonio. 
               If you take pride in your craft, we want to hear from you.
             </p>
