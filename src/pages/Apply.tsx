@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { showSuccess, showError } from "@/utils/toast";
-import { Phone, Send, AlertTriangle } from "lucide-react";
+import { Phone, Send } from "lucide-react";
 
 const Apply = () => {
   const [teamType, setTeamType] = useState<string>("solo");
@@ -162,26 +162,23 @@ const Apply = () => {
             </div>
 
             {/* Disclaimer */}
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 space-y-3">
-              <div className="flex items-start gap-3">
-                <AlertTriangle className="h-6 w-6 text-amber-600 shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-bold text-amber-900 text-lg">READ BEFORE APPLYING:</h3>
-                  <p className="text-amber-800 text-sm leading-relaxed">
-                    This opportunity is best suited for lean teams that are willing to bid aggressively below their competition.
-                    We will be providing leads/estimates on a weekly basis at no cost to you. You will be taking home 85-90%
-                    of the job size.
-                  </p>
-                  <p className="text-amber-800 text-sm leading-relaxed mt-2">
-                    You will be representing Asha Interiors and must have excellent sales acumen and present yourself in a
-                    professional manner to customers.
-                  </p>
-                  <p className="text-amber-800 text-sm leading-relaxed mt-2">
-                    We aim to establish a long term business partnership and fill your calendar with consistent kitchen jobs.
-                    If these terms align with you and your business, please apply and we will reach out for an over-the-phone
-                    screening.
-                  </p>
-                </div>
+            <div className="bg-amber-50 border border-amber-200 rounded-xl px-3 py-6 space-y-3">
+              <div>
+                <h3 className="font-bold text-amber-900 text-lg">READ BEFORE APPLYING:</h3>
+                <p className="text-amber-800 text-sm leading-relaxed">
+                  This opportunity is best suited for lean teams that are willing to bid aggressively below their competition.
+                  We will be providing leads/estimates on a weekly basis at no cost to you. You will be taking home 85-90%
+                  of the job size.
+                </p>
+                <p className="text-amber-800 text-sm leading-relaxed mt-2">
+                  You will be representing Asha Interiors and must have excellent sales acumen and present yourself in a
+                  professional manner to customers.
+                </p>
+                <p className="text-amber-800 text-sm leading-relaxed mt-2">
+                  We aim to establish a long term business partnership and fill your calendar with consistent kitchen jobs.
+                  If these terms align with you and your business, please apply and we will reach out for an over-the-phone
+                  screening.
+                </p>
               </div>
             </div>
 
