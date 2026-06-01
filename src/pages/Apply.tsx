@@ -12,6 +12,9 @@ import { showSuccess, showError } from "@/utils/toast";
 import { Phone, Send } from "lucide-react";
 
 const Apply = () => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [teamType, setTeamType] = useState<string>("solo");
   const [teamSize, setTeamSize] = useState<string>("");
   const [experienceYears, setExperienceYears] = useState<string>("");
@@ -22,6 +25,18 @@ const Apply = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!fullName.trim()) {
+      showError("Please enter your full name.");
+      return;
+    }
+    if (!email.trim()) {
+      showError("Please enter your email address.");
+      return;
+    }
+    if (!phone.trim()) {
+      showError("Please enter your phone number.");
+      return;
+    }
     if (teamType === "team" && !teamSize) {
       showError("Please enter your team size.");
       return;
@@ -165,6 +180,50 @@ const Apply = () => {
                   <Label htmlFor="blueprintHelp">With some help</Label>
                 </div>
               </RadioGroup>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-6">
+              <h2 className="text-xl font-bold text-slate-900">Your Contact Information</h2>
+              <div className="space-y-3">
+                <Label htmlFor="fullName" className="text-lg font-semibold text-slate-900 block">
+                  Full Name
+                </Label>
+                <Input
+                  id="fullName"
+                  type="text"
+                  placeholder="John Doe"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="rounded-xl py-6 max-w-md"
+                />
+              </div>
+              <div className="space-y-3">
+                <Label htmlFor="email" className="text-lg font-semibold text-slate-900 block">
+                  Email Address
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="johndoe@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="rounded-xl py-6 max-w-md"
+                />
+              </div>
+              <div className="space-y-3">
+                <Label htmlFor="phone" className="text-lg font-semibold text-slate-900 block">
+                  Phone Number
+                </Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="rounded-xl py-6 max-w-md"
+                />
+              </div>
             </div>
 
             {/* Disclaimer */}
