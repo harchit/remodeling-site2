@@ -57,7 +57,7 @@ const Apply = () => {
       </section>
 
       {/* Application Form */}
-      <section className="py-24">
+      <section className="py-12">
         <div className="max-w-3xl mx-auto px-6">
           <form onSubmit={handleSubmit} className="space-y-10">
             {/* Question 1: Team / Solo */}
