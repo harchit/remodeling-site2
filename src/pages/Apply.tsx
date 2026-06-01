@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import { showSuccess, showError } from "@/utils/toast";
 import { Phone, Send } from "lucide-react";
 
@@ -16,6 +17,7 @@ const Apply = () => {
   const [experienceYears, setExperienceYears] = useState<string>("");
   const [costEstimate, setCostEstimate] = useState<string>("");
   const [blueprintDesign, setBlueprintDesign] = useState<string>("");
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -26,6 +28,10 @@ const Apply = () => {
     }
     if (!experienceYears || !costEstimate || !blueprintDesign) {
       showError("Please answer all questions.");
+      return;
+    }
+    if (!agreeToTerms) {
+      showError("Please agree to the terms before submitting.");
       return;
     }
     setIsSubmitting(true);
@@ -180,12 +186,24 @@ const Apply = () => {
                   screening.
                 </p>
               </div>
+
+              {/* Agree checkbox */}
+              <div className="flex items-center space-x-2 pt-2">
+                <Checkbox
+                  id="agreeTerms"
+                  checked={agreeToTerms}
+                  onCheckedChange={(checked) => setAgreeToTerms(checked === true)}
+                />
+                <Label htmlFor="agreeTerms" className="text-sm font-medium text-amber-900 cursor-pointer">
+                  I agree to these terms
+                </Label>
+              </div>
             </div>
 
             {/* Submit */}
             <Button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !agreeToTerms}
               className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-8 text-lg font-bold w-full shadow-lg shadow-blue-200 transition-all active:scale-95"
             >
               {isSubmitting ? (
