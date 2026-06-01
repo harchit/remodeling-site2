@@ -16,7 +16,7 @@ const Apply = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [isLicensed, setIsLicensed] = useState<string>("");
+  const [projectValue, setProjectValue] = useState<string>("");
   const [teamType, setTeamType] = useState<string>("");
   const [teamSize, setTeamSize] = useState<string>("");
   const [experienceYears, setExperienceYears] = useState<string>("");
@@ -45,8 +45,8 @@ const Apply = () => {
       showError("Please enter your phone number.");
       return;
     }
-    if (!isLicensed) {
-      showError("Please answer if you are a licensed kitchen remodeler.");
+    if (!projectValue) {
+      showError("Please select your average project value.");
       return;
     }
     if (!teamType) {
@@ -75,7 +75,7 @@ const Apply = () => {
     formData.append("fullName", fullName.trim());
     formData.append("email", email.trim());
     formData.append("phone", phone.trim());
-    formData.append("isLicensed", isLicensed);
+    formData.append("projectValue", projectValue);
     formData.append("teamType", teamType);
     if (teamType === "team" && teamSize) {
       formData.append("teamSize", teamSize);
@@ -98,7 +98,7 @@ const Apply = () => {
         setFullName("");
         setEmail("");
         setPhone("");
-        setIsLicensed("");
+        setProjectValue("");
         setTeamType("");
         setTeamSize("");
         setExperienceYears("");
@@ -139,24 +139,32 @@ const Apply = () => {
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-6">
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-10">
-            {/* Question 1: Licensed */}
+            {/* Question 1: Average Project Value */}
             <div className="space-y-4">
               <Label className="text-lg font-semibold text-slate-900 block">
-                Are you a licensed kitchen remodeller in the Houston area?
+                What is your average kitchen remodel project value?
               </Label>
               <RadioGroup
-                value={isLicensed}
-                onValueChange={setIsLicensed}
-                className="flex flex-col sm:flex-row gap-4"
-                name="isLicensed"
+                value={projectValue}
+                onValueChange={setProjectValue}
+                className="flex flex-col gap-3"
+                name="projectValue"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="yes" id="licensedYes" />
-                  <Label htmlFor="licensedYes">Yes</Label>
+                  <RadioGroupItem value="<20k" id="pvUnder20" />
+                  <Label htmlFor="pvUnder20"><$20k</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="no" id="licensedNo" />
-                  <Label htmlFor="licensedNo">No</Label>
+                  <RadioGroupItem value="20k-50k" id="pv20to50" />
+                  <Label htmlFor="pv20to50">$20k–50k</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="50k-100k" id="pv50to100" />
+                  <Label htmlFor="pv50to100">$50k–100k</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="100k+" id="pvOver100" />
+                  <Label htmlFor="pvOver100">$100k+</Label>
                 </div>
               </RadioGroup>
             </div>
