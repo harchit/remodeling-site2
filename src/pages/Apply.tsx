@@ -16,12 +16,12 @@ const Apply = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [projectValue, setProjectValue] = useState<string>("");
-  const [teamType, setTeamType] = useState<string>("");
-  const [teamSize, setTeamSize] = useState<string>("");
-  const [experienceYears, setExperienceYears] = useState<string>("");
-  const [costEstimate, setCostEstimate] = useState<string>("");
-  const [blueprintDesign, setBlueprintDesign] = useState<string>("");
+  const [projectValue, setProjectValue] = useState("");
+  const [teamType, setTeamType] = useState("");
+  const [teamSize, setTeamSize] = useState("");
+  const [experienceYears, setExperienceYears] = useState("");
+  const [costEstimate, setCostEstimate] = useState("");
+  const [blueprintDesign, setBlueprintDesign] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -106,7 +106,7 @@ const Apply = () => {
       } else {
         showError("Something went wrong. Please try again or call us directly.");
       }
-    } catch {
+    } catch (err) {
       showError("Network error. Please check your connection or call us.");
     } finally {
       setIsSubmitting(false);
@@ -151,11 +151,11 @@ const Apply = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="20k-50k" id="pv20to50" />
-                  <Label htmlFor="pv20to50">$20k–50k</Label>
+                  <Label htmlFor="pv20to50">$20k-50k</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="50k-100k" id="pv50to100" />
-                  <Label htmlFor="pv50to100">$50k–100k</Label>
+                  <Label htmlFor="pv50to100">$50k-100k</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="100k+" id="pvOver100" />
@@ -236,7 +236,7 @@ const Apply = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="partially" id="costPartial" />
-                  <Label htmlFor="costPartial">Partially – within 24 hours</Label>
+                  <Label htmlFor="costPartial">Partially within 24 hours</Label>
                 </div>
               </RadioGroup>
             </div>
