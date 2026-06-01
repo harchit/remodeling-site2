@@ -87,10 +87,10 @@ const Apply = () => {
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-6">
           <form onSubmit={handleSubmit} className="space-y-10">
-            {/* Question 1: Licensed Contractor */}
+            {/* Question 1: Team / Solo */}
             <div className="space-y-4">
               <Label className="text-lg font-semibold text-slate-900 block">
-                Are you a licensed contractor?
+                Are you a solo contractor or do you have a team?
               </Label>
               <RadioGroup
                 value={teamType}
@@ -99,13 +99,28 @@ const Apply = () => {
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="solo" id="solo" />
-                  <Label htmlFor="solo">Yes</Label>
+                  <Label htmlFor="solo">Solo contractor</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="team" id="team" />
-                  <Label htmlFor="team">No</Label>
+                  <Label htmlFor="team">I have a team</Label>
                 </div>
               </RadioGroup>
+              {teamType === "team" && (
+                <div className="mt-2">
+                  <Label htmlFor="teamSize" className="text-sm text-slate-600">
+                    How many men on your team?
+                  </Label>
+                  <Input
+                    id="teamSize"
+                    type="number"
+                    placeholder="e.g. 3"
+                    value={teamSize}
+                    onChange={(e) => setTeamSize(e.target.value)}
+                    className="rounded-xl py-6 max-w-xs mt-1"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Question 2: Experience Years */}
