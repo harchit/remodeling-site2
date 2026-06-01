@@ -11,7 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { showSuccess, showError } from "@/utils/toast";
 import { Phone, Send } from "lucide-react";
 
-const Apply = () => {
+function Apply() {
   const formRef = useRef<HTMLFormElement>(null);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,7 +25,7 @@ const Apply = () => {
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     if (!fullName.trim()) {
@@ -111,7 +111,7 @@ const Apply = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -125,7 +125,7 @@ const Apply = () => {
               Join the <span className="text-blue-400">Asha Interiors</span> Team
             </h1>
             <p className="text-lg text-slate-300 leading-relaxed">
-              We're hiring experienced kitchen remodelers in Houston, Dallas, and San Antonio. 
+              We are hiring experienced kitchen remodelers in Houston, Dallas, and San Antonio. 
               If you take pride in your craft, we want to hear from you.
             </p>
           </div>
@@ -135,6 +135,7 @@ const Apply = () => {
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-6">
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-10">
+
             <div className="space-y-4">
               <Label className="text-lg font-semibold text-slate-900 block">
                 What is your average kitchen remodel project value?
@@ -146,19 +147,19 @@ const Apply = () => {
                 name="projectValue"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="<20k" id="pvUnder20" />
-                  <Label htmlFor="pvUnder20"><$20k</Label>
+                  <RadioGroupItem value="lt20k" id="pvUnder20" />
+                  <Label htmlFor="pvUnder20">Less than $20k</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="20k-50k" id="pv20to50" />
-                  <Label htmlFor="pv20to50">$20k-50k</Label>
+                  <Label htmlFor="pv20to50">$20k to $50k</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="50k-100k" id="pv50to100" />
-                  <Label htmlFor="pv50to100">$50k-100k</Label>
+                  <Label htmlFor="pv50to100">$50k to $100k</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="100k+" id="pvOver100" />
+                  <RadioGroupItem value="100kplus" id="pvOver100" />
                   <Label htmlFor="pvOver100">$100k+</Label>
                 </div>
               </RadioGroup>
@@ -389,6 +390,6 @@ const Apply = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default Apply;
