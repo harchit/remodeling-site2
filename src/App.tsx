@@ -11,6 +11,7 @@ import StickyCallButton from "./components/StickyCallButton";
 import Cabinetry from "./pages/Cabinetry";
 import Countertops from "./pages/Countertops";
 import FullRemodels from "./pages/FullRemodels";
+import Apply from "./pages/Apply";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/cabinetry" element={<Cabinetry />} />
           <Route path="/countertops" element={<Countertops />} />
           <Route path="/full-remodels" element={<FullRemodels />} />
+          <Route path="/apply" element={<Apply />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

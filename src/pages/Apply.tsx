@@ -1,0 +1,211 @@
+"use client";
+
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { showSuccess, showError } from "@/utils/toast";
+import { Phone, Send } from "lucide-react";
+
+const Apply = () => {
+  const [teamType, setTeamType] = useState<string>("solo");
+  const [teamSize, setTeamSize] = useState<string>("");
+  const [experienceYears, setExperienceYears] = useState<string>("");
+  const [costEstimate, setCostEstimate] = useState<string>("");
+  const [blueprintDesign, setBlueprintDesign] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (teamType === "team" && !teamSize) {
+      showError("Please enter your team size.");
+      return;
+    }
+    if (!experienceYears || !costEstimate || !blueprintDesign) {
+      showError("Please answer all questions.");
+      return;
+    }
+    setIsSubmitting(true);
+    // Simulate submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      showSuccess("Application submitted! We'll be in touch shortly.");
+    }, 1500);
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+
+      {/* Header */}
+      <section className="pt-32 pb-20 bg-slate-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-blue-600/10" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl font-extrabold mb-6">
+              Join the <span className="text-blue-400">Asha Interiors</span> Team
+            </h1>
+            <p className="text-xl text-slate-300 leading-relaxed">
+              We're hiring experienced kitchen remodelers in Houston, Dallas, and San Antonio. 
+              If you take pride in your craft, we want to hear from you.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Application Form */}
+      <section className="py-24">
+        <div className="max-w-3xl mx-auto px-6">
+          <form onSubmit={handleSubmit} className="space-y-10">
+            {/* Question 1: Team / Solo */}
+            <div className="space-y-4">
+              <Label className="text-lg font-semibold text-slate-900 block">
+                Are you a solo contractor or do you have a team?
+              </Label>
+              <RadioGroup
+                value={teamType}
+                onValueChange={setTeamType}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="solo" id="solo" />
+                  <Label htmlFor="solo">Solo contractor</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="team" id="team" />
+                  <Label htmlFor="team">I have a team</Label>
+                </div>
+              </RadioGroup>
+              {teamType === "team" && (
+                <div className="mt-2">
+                  <Label htmlFor="teamSize" className="text-sm text-slate-600">
+                    How many men on your team?
+                  </Label>
+                  <Input
+                    id="teamSize"
+                    type="number"
+                    placeholder="e.g. 3"
+                    value={teamSize}
+                    onChange={(e) => setTeamSize(e.target.value)}
+                    className="rounded-xl py-6 max-w-xs mt-1"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Question 2: Experience Years */}
+            <div className="space-y-3">
+              <Label htmlFor="experienceYears" className="text-lg font-semibold text-slate-900 block">
+                How many years of kitchen remodeling experience do you have?
+              </Label>
+              <Input
+                id="experienceYears"
+                type="number"
+                placeholder="e.g. 5"
+                value={experienceYears}
+                onChange={(e) => setExperienceYears(e.target.value)}
+                className="rounded-xl py-6 max-w-xs"
+              />
+            </div>
+
+            {/* Question 3: Cost Estimate */}
+            <div className="space-y-3">
+              <Label className="text-lg font-semibold text-slate-900 block">
+                Scenario: You just finished an estimate with a client who wants a kitchen remodel. Would you be able to accurately calculate material and labor costs that same day?
+              </Label>
+              <RadioGroup
+                value={costEstimate}
+                onValueChange={setCostEstimate}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="yes" id="costYes" />
+                  <Label htmlFor="costYes">Yes</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="no" id="costNo" />
+                  <Label htmlFor="costNo">No</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="partially" id="costPartial" />
+                  <Label htmlFor="costPartial">Partially – within 24 hours</Label>
+                </div>
+              </RadioGroup>
+            </div>
+
+            {/* Question 4: Blueprints */}
+            <div className="space-y-3">
+              <Label className="text-lg font-semibold text-slate-900 block">
+                Are you comfortable designing your own blueprints/designs for clients?
+              </Label>
+              <RadioGroup
+                value={blueprintDesign}
+                onValueChange={setBlueprintDesign}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="yes" id="blueprintYes" />
+                  <Label htmlFor="blueprintYes">Yes</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="no" id="blueprintNo" />
+                  <Label htmlFor="blueprintNo">No</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="withHelp" id="blueprintHelp" />
+                  <Label htmlFor="blueprintHelp">With some help</Label>
+                </div>
+              </RadioGroup>
+            </div>
+
+            {/* Submit */}
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-8 text-lg font-bold w-full shadow-lg shadow-blue-200 transition-all active:scale-95"
+            >
+              {isSubmitting ? (
+                <div className="flex items-center gap-2">
+                  <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Submitting...
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Send className="h-5 w-5" />
+                  Submit Application
+                </div>
+              )}
+            </Button>
+          </form>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-slate-900 text-white text-center">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-8">
+          <h2 className="text-4xl font-bold">Questions? Call Our Hiring Team</h2>
+          <p className="text-slate-300 text-lg">
+            Speak directly with Asha Interiors to learn more about this opportunity.
+          </p>
+          <Button
+            asChild
+            size="lg"
+            className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 py-8 text-xl"
+          >
+            <a href="tel:2819326994" className="flex items-center gap-3">
+              <Phone className="h-6 w-6" />
+              (281) 932-6994
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Apply;
