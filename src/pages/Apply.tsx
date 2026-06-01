@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import { showSuccess, showError } from "@/utils/toast";
 import { Phone, Send } from "lucide-react";
 
 const Apply = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -24,8 +25,9 @@ const Apply = () => {
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Client-side validation
     if (!fullName.trim()) {
       showError("Please enter your full name.");
       return;
@@ -34,7 +36,6 @@ const Apply = () => {
       showError("Please enter your email address.");
       return;
     }
-    // Email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.trim())) {
       showError("Please enter a valid email address.");
@@ -64,12 +65,54 @@ const Apply = () => {
       showError("Please agree to the terms before submitting.");
       return;
     }
+
     setIsSubmitting(true);
-    // Simulate submission
-    setTimeout(() => {
+
+    // Build FormData
+    const formData = new FormData();
+    formData.append("_captcha", "false");
+    formData.append("_subject", "New Kitchen Remodeler Application - Asha Interiors");
+    formData.append("fullName", fullName.trim());
+    formData.append("email", email.trim());
+    formData.append("phone", phone.trim());
+    formData.append("isLicensed", isLicensed);
+    formData.append("teamType", teamType);
+    if (teamType === "team" && teamSize) {
+      formData.append("teamSize", teamSize);
+    }
+    formData.append("experienceYears", experienceYears);
+    formData.append("costEstimate", costEstimate);
+    formData.append("blueprintDesign", blueprintDesign);
+    formData.append("agreeToTerms", agreeToTerms ? "Yes" : "No");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/harchit23@gmail.com", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        showSuccess("Application submitted! We'll be in touch shortly.");
+        // Optionally reset form
+        formRef.current?.reset();
+        setFullName("");
+        setEmail("");
+        setPhone("");
+        setIsLicensed("");
+        setTeamType("");
+        setTeamSize("");
+        setExperienceYears("");
+        setCostEstimate("");
+        setBlueprintDesign("");
+        setAgreeToTerms(false);
+      } else {
+        showError("Something went wrong. Please try again or call us directly.");
+      }
+    } catch {
+      showError("Network error. Please check your connection or call us.");
+    } finally {
       setIsSubmitting(false);
-      showSuccess("Application submitted! We'll be in touch shortly.");
-    }, 1500);
+    }
   };
 
   return (
@@ -95,7 +138,7 @@ const Apply = () => {
       {/* Application Form */}
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-6">
-          <form onSubmit={handleSubmit} className="space-y-10">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-10">
             {/* Question 1: Licensed */}
             <div className="space-y-4">
               <Label className="text-lg font-semibold text-slate-900 block">
@@ -105,6 +148,7 @@ const Apply = () => {
                 value={isLicensed}
                 onValueChange={setIsLicensed}
                 className="flex flex-col sm:flex-row gap-4"
+                name="isLicensed"
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="yes" id="licensedYes" />
@@ -126,6 +170,7 @@ const Apply = () => {
                 value={teamType}
                 onValueChange={setTeamType}
                 className="flex flex-col sm:flex-row gap-4"
+                name="teamType"
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="solo" id="solo" />
@@ -143,6 +188,7 @@ const Apply = () => {
                   </Label>
                   <Input
                     id="teamSize"
+                    name="teamSize"
                     type="number"
                     placeholder="e.g. 3"
                     value={teamSize}
@@ -160,6 +206,7 @@ const Apply = () => {
               </Label>
               <Input
                 id="experienceYears"
+                name="experienceYears"
                 type="number"
                 placeholder="e.g. 5"
                 value={experienceYears}
@@ -177,6 +224,7 @@ const Apply = () => {
                 value={costEstimate}
                 onValueChange={setCostEstimate}
                 className="flex flex-col sm:flex-row gap-4"
+                name="costEstimate"
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="yes" id="costYes" />
@@ -202,6 +250,7 @@ const Apply = () => {
                 value={blueprintDesign}
                 onValueChange={setBlueprintDesign}
                 className="flex flex-col sm:flex-row gap-4"
+                name="blueprintDesign"
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="yes" id="blueprintYes" />
@@ -227,6 +276,7 @@ const Apply = () => {
                 </Label>
                 <Input
                   id="fullName"
+                  name="fullName"
                   type="text"
                   placeholder="John Doe"
                   value={fullName}
@@ -240,6 +290,7 @@ const Apply = () => {
                 </Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="johndoe@example.com"
                   value={email}
@@ -254,6 +305,7 @@ const Apply = () => {
                 </Label>
                 <Input
                   id="phone"
+                  name="phone"
                   type="tel"
                   placeholder="(555) 123-4567"
                   value={phone}
@@ -288,6 +340,7 @@ const Apply = () => {
               <div className="flex items-center space-x-2 pt-2">
                 <Checkbox
                   id="agreeTerms"
+                  name="agreeToTerms"
                   checked={agreeToTerms}
                   onCheckedChange={(checked) => setAgreeToTerms(checked === true)}
                 />
