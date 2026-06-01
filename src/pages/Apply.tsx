@@ -27,6 +27,7 @@ const Apply = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Client-side validation
     if (!fullName.trim()) {
       showError("Please enter your full name.");
       return;
@@ -67,6 +68,7 @@ const Apply = () => {
 
     setIsSubmitting(true);
 
+    // Build FormData
     const formData = new FormData();
     formData.append("_captcha", "false");
     formData.append("_subject", "New Kitchen Remodeler Application - Asha Interiors");
@@ -91,6 +93,7 @@ const Apply = () => {
 
       if (response.ok) {
         showSuccess("Application submitted! We'll be in touch shortly.");
+        // Optionally reset form
         formRef.current?.reset();
         setFullName("");
         setEmail("");
