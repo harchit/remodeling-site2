@@ -15,8 +15,7 @@ const Apply = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [teamType, setTeamType] = useState<string>("solo");
-  const [teamSize, setTeamSize] = useState<string>("");
+  const [isLicensed, setIsLicensed] = useState<string>("");
   const [experienceYears, setExperienceYears] = useState<string>("");
   const [costEstimate, setCostEstimate] = useState<string>("");
   const [blueprintDesign, setBlueprintDesign] = useState<string>("");
@@ -43,8 +42,8 @@ const Apply = () => {
       showError("Please enter your phone number.");
       return;
     }
-    if (teamType === "team" && !teamSize) {
-      showError("Please enter your team size.");
+    if (!isLicensed) {
+      showError("Please answer if you are a licensed kitchen remodeler.");
       return;
     }
     if (!experienceYears || !costEstimate || !blueprintDesign) {
@@ -87,40 +86,25 @@ const Apply = () => {
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-6">
           <form onSubmit={handleSubmit} className="space-y-10">
-            {/* Question 1: Team / Solo */}
+            {/* Question 1: Licensed */}
             <div className="space-y-4">
               <Label className="text-lg font-semibold text-slate-900 block">
-                Are you a solo contractor or do you have a team?
+                Are you a licensed kitchen remodeller in the Houston area?
               </Label>
               <RadioGroup
-                value={teamType}
-                onValueChange={setTeamType}
+                value={isLicensed}
+                onValueChange={setIsLicensed}
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="solo" id="solo" />
-                  <Label htmlFor="solo">Solo contractor</Label>
+                  <RadioGroupItem value="yes" id="licensedYes" />
+                  <Label htmlFor="licensedYes">Yes</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="team" id="team" />
-                  <Label htmlFor="team">I have a team</Label>
+                  <RadioGroupItem value="no" id="licensedNo" />
+                  <Label htmlFor="licensedNo">No</Label>
                 </div>
               </RadioGroup>
-              {teamType === "team" && (
-                <div className="mt-2">
-                  <Label htmlFor="teamSize" className="text-sm text-slate-600">
-                    How many men on your team?
-                  </Label>
-                  <Input
-                    id="teamSize"
-                    type="number"
-                    placeholder="e.g. 3"
-                    value={teamSize}
-                    onChange={(e) => setTeamSize(e.target.value)}
-                    className="rounded-xl py-6 max-w-xs mt-1"
-                  />
-                </div>
-              )}
             </div>
 
             {/* Question 2: Experience Years */}
