@@ -33,6 +33,12 @@ const Apply = () => {
       showError("Please enter your email address.");
       return;
     }
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      showError("Please enter a valid email address.");
+      return;
+    }
     if (!phone.trim()) {
       showError("Please enter your phone number.");
       return;
@@ -213,7 +219,7 @@ const Apply = () => {
               </div>
               <div className="space-y-3">
                 <Label htmlFor="phone" className="text-lg font-semibold text-slate-900 block">
-                  Phone Number
+                  Phone Number <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="phone"
@@ -222,6 +228,7 @@ const Apply = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="rounded-xl py-6 max-w-md"
+                  required
                 />
               </div>
             </div>
