@@ -16,6 +16,8 @@ const Apply = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [isLicensed, setIsLicensed] = useState<string>("");
+  const [teamType, setTeamType] = useState<string>("");
+  const [teamSize, setTeamSize] = useState<string>("");
   const [experienceYears, setExperienceYears] = useState<string>("");
   const [costEstimate, setCostEstimate] = useState<string>("");
   const [blueprintDesign, setBlueprintDesign] = useState<string>("");
@@ -44,6 +46,14 @@ const Apply = () => {
     }
     if (!isLicensed) {
       showError("Please answer if you are a licensed kitchen remodeler.");
+      return;
+    }
+    if (!teamType) {
+      showError("Please answer if you are solo or have a team.");
+      return;
+    }
+    if (teamType === "team" && !teamSize) {
+      showError("Please enter your team size.");
       return;
     }
     if (!experienceYears || !costEstimate || !blueprintDesign) {
@@ -107,7 +117,43 @@ const Apply = () => {
               </RadioGroup>
             </div>
 
-            {/* Question 2: Experience Years */}
+            {/* Question 2: Solo / Team */}
+            <div className="space-y-4">
+              <Label className="text-lg font-semibold text-slate-900 block">
+                Are you solo or have a team?
+              </Label>
+              <RadioGroup
+                value={teamType}
+                onValueChange={setTeamType}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="solo" id="solo" />
+                  <Label htmlFor="solo">Solo contractor</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="team" id="team" />
+                  <Label htmlFor="team">I have a team</Label>
+                </div>
+              </RadioGroup>
+              {teamType === "team" && (
+                <div className="mt-2">
+                  <Label htmlFor="teamSize" className="text-sm text-slate-600">
+                    How many men on your team?
+                  </Label>
+                  <Input
+                    id="teamSize"
+                    type="number"
+                    placeholder="e.g. 3"
+                    value={teamSize}
+                    onChange={(e) => setTeamSize(e.target.value)}
+                    className="rounded-xl py-6 max-w-xs mt-1"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Question 3: Experience Years */}
             <div className="space-y-3">
               <Label htmlFor="experienceYears" className="text-lg font-semibold text-slate-900 block">
                 How many years of kitchen remodeling experience do you have?
@@ -122,7 +168,7 @@ const Apply = () => {
               />
             </div>
 
-            {/* Question 3: Cost Estimate */}
+            {/* Question 4: Cost Estimate */}
             <div className="space-y-3">
               <Label className="text-lg font-semibold text-slate-900 block">
                 Scenario: You just finished an estimate with a client who wants a kitchen remodel. Would you be able to accurately calculate material and labor costs that same day?
@@ -147,7 +193,7 @@ const Apply = () => {
               </RadioGroup>
             </div>
 
-            {/* Question 4: Blueprints */}
+            {/* Question 5: Blueprints */}
             <div className="space-y-3">
               <Label className="text-lg font-semibold text-slate-900 block">
                 Are you comfortable designing your own blueprints/designs for clients?
