@@ -206,7 +206,7 @@ const Apply = () => {
               </div>
               <div className="space-y-3">
                 <Label htmlFor="email" className="text-lg font-semibold text-slate-900 block">
-                  Email Address
+                  Email Address <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="email"
@@ -215,6 +215,7 @@ const Apply = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="rounded-xl py-6 max-w-md"
+                  required
                 />
               </div>
               <div className="space-y-3">
