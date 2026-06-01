@@ -92,6 +92,10 @@ function Apply() {
 
       if (response.ok) {
         showSuccess("Application submitted! We'll be in touch shortly.");
+        // Fire Facebook Lead event
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead");
+        }
         formRef.current?.reset();
         setFullName("");
         setEmail("");
