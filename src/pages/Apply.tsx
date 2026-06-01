@@ -93,7 +93,6 @@ const Apply = () => {
 
       if (response.ok) {
         showSuccess("Application submitted! We'll be in touch shortly.");
-        // Optionally reset form
         formRef.current?.reset();
         setFullName("");
         setEmail("");
