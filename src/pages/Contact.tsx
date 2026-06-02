@@ -21,6 +21,12 @@ const Contact = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
+      
+      // Fire Facebook Contact event
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Contact");
+      }
+
       toast({
         title: "Message Sent!",
         description: "We'll get back to you as soon as possible.",
