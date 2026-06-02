@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { showSuccess, showError } from "@/utils/toast";
-import { Phone, Send } from "lucide-react";
+import { Phone, Send, CheckCircle2, Calendar } from "lucide-react";
 
 function Apply() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -24,6 +24,7 @@ function Apply() {
   const [blueprintDesign, setBlueprintDesign] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -107,6 +108,7 @@ function Apply() {
         setCostEstimate("");
         setBlueprintDesign("");
         setAgreeToTerms(false);
+        setIsSubmitted(true);
       } else {
         showError("Something went wrong. Please try again or call us directly.");
       }
@@ -138,237 +140,290 @@ function Apply() {
 
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-6">
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-10">
+          {isSubmitted ? (
+            <div className="bg-white border border-slate-100 rounded-[40px] p-8 md:p-16 shadow-2xl flex flex-col items-center text-center gap-8 my-8 animate-in fade-in zoom-in-95 duration-500">
+              <div className="bg-green-100 p-6 rounded-full">
+                <CheckCircle2 className="h-16 w-16 text-green-600" />
+              </div>
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Application Received!</h2>
+                <p className="text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
+                  Thank you for applying, <span className="font-bold text-slate-900">{fullName || "Contractor"}</span>. Your credentials have been submitted to our recruitment team.
+                </p>
+              </div>
 
-            <div className="space-y-4">
-              <Label className="text-lg font-semibold text-slate-900 block">
-                What is your average kitchen remodel project value?
-              </Label>
-              <RadioGroup
-                value={projectValue}
-                onValueChange={setProjectValue}
-                className="flex flex-col gap-3"
-                name="projectValue"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="lt20k" id="pvUnder20" />
-                  <Label htmlFor="pvUnder20">Less than $20k</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="20k-50k" id="pv20to50" />
-                  <Label htmlFor="pv20to50">$20k to $50k</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="50k-100k" id="pv50to100" />
-                  <Label htmlFor="pv50to100">$50k to $100k</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="100kplus" id="pvOver100" />
-                  <Label htmlFor="pvOver100">$100k+</Label>
-                </div>
-              </RadioGroup>
+              <div className="w-full max-w-lg bg-blue-50 rounded-2xl p-6 text-left border border-blue-100 space-y-4">
+                <h3 className="font-bold text-blue-900 text-lg flex items-center gap-2">
+                  <Calendar className="h-5 w-5 text-blue-600" /> What Happens Next?
+                </h3>
+                <ul className="space-y-3 text-slate-700 text-sm leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span><strong>1. Application Review:</strong> We will review your answers and credentials over the next 24-48 business hours.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span><strong>2. Phone Screening:</strong> We will reach out for a brief over-the-phone screening to learn about your business setup.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span><strong>3. Lead Dispatch:</strong> Once approved, we will begin dispatching high-intent weekly kitchen remodeling leads directly to you.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                <Button
+                  asChild
+                  className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6 px-8 text-base font-bold shadow-lg shadow-blue-200"
+                >
+                  <a href="tel:2819326994" className="flex items-center gap-2">
+                    <Phone className="h-4 w-4 animate-pulse" />
+                    Call Hiring Team Now
+                  </a>
+                </Button>
+                <Button
+                  onClick={() => setIsSubmitted(false)}
+                  variant="outline"
+                  className="rounded-xl py-6 px-8 text-base font-medium border-slate-200 hover:bg-slate-50 text-slate-700"
+                >
+                  Submit Another Application
+                </Button>
+              </div>
             </div>
+          ) : (
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-10">
 
-            <div className="space-y-4">
-              <Label className="text-lg font-semibold text-slate-900 block">
-                Are you solo or have a team?
-              </Label>
-              <RadioGroup
-                value={teamType}
-                onValueChange={setTeamType}
-                className="flex flex-col sm:flex-row gap-4"
-                name="teamType"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="solo" id="solo" />
-                  <Label htmlFor="solo">Solo contractor</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="team" id="team" />
-                  <Label htmlFor="team">I have a team</Label>
-                </div>
-              </RadioGroup>
-              {teamType === "team" && (
-                <div className="mt-2">
-                  <Label htmlFor="teamSize" className="text-sm text-slate-600">
-                    How many men on your team?
+              <div className="space-y-4">
+                <Label className="text-lg font-semibold text-slate-900 block">
+                  What is your average kitchen remodel project value?
+                </Label>
+                <RadioGroup
+                  value={projectValue}
+                  onValueChange={setProjectValue}
+                  className="flex flex-col gap-3"
+                  name="projectValue"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="lt20k" id="pvUnder20" />
+                    <Label htmlFor="pvUnder20">Less than $20k</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="20k-50k" id="pv20to50" />
+                    <Label htmlFor="pv20to50">$20k to $50k</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="50k-100k" id="pv50to100" />
+                    <Label htmlFor="pv50to100">$50k to $100k</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="100kplus" id="pvOver100" />
+                    <Label htmlFor="pvOver100">$100k+</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <div className="space-y-4">
+                <Label className="text-lg font-semibold text-slate-900 block">
+                  Are you solo or have a team?
+                </Label>
+                <RadioGroup
+                  value={teamType}
+                  onValueChange={setTeamType}
+                  className="flex flex-col sm:flex-row gap-4"
+                  name="teamType"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="solo" id="solo" />
+                    <Label htmlFor="solo">Solo contractor</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="team" id="team" />
+                    <Label htmlFor="team">I have a team</Label>
+                  </div>
+                </RadioGroup>
+                {teamType === "team" && (
+                  <div className="mt-2">
+                    <Label htmlFor="teamSize" className="text-sm text-slate-600">
+                      How many men on your team?
+                    </Label>
+                    <Input
+                      id="teamSize"
+                      name="teamSize"
+                      type="number"
+                      placeholder="e.g. 3"
+                      value={teamSize}
+                      onChange={(e) => setTeamSize(e.target.value)}
+                      className="rounded-xl py-6 max-w-xs mt-1"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-3">
+                <Label htmlFor="experienceYears" className="text-lg font-semibold text-slate-900 block">
+                  How many years of kitchen remodeling experience do you have?
+                </Label>
+                <Input
+                  id="experienceYears"
+                  name="experienceYears"
+                  type="number"
+                  placeholder="e.g. 5"
+                  value={experienceYears}
+                  onChange={(e) => setExperienceYears(e.target.value)}
+                  className="rounded-xl py-6 max-w-xs"
+                />
+              </div>
+
+              <div className="space-y-3">
+                <Label className="text-lg font-semibold text-slate-900 block">
+                  Scenario: You just finished an estimate with a client who wants a kitchen remodel. Would you be able to accurately calculate material and labor costs that same day?
+                </Label>
+                <RadioGroup
+                  value={costEstimate}
+                  onValueChange={setCostEstimate}
+                  className="flex flex-col sm:flex-row gap-4"
+                  name="costEstimate"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="yes" id="costYes" />
+                    <Label htmlFor="costYes">Yes</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="no" id="costNo" />
+                    <Label htmlFor="costNo">No</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="partially" id="costPartial" />
+                    <Label htmlFor="costPartial">Partially within 24 hours</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <div className="space-y-3">
+                <Label className="text-lg font-semibold text-slate-900 block">
+                  Are you comfortable designing your own blueprints/designs for clients?
+                </Label>
+                <RadioGroup
+                  value={blueprintDesign}
+                  onValueChange={setBlueprintDesign}
+                  className="flex flex-col sm:flex-row gap-4"
+                  name="blueprintDesign"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="yes" id="blueprintYes" />
+                    <Label htmlFor="blueprintYes">Yes</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="no" id="blueprintNo" />
+                    <Label htmlFor="blueprintNo">No</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="withHelp" id="blueprintHelp" />
+                    <Label htmlFor="blueprintHelp">With some help</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <div className="space-y-6">
+                <h2 className="text-xl font-bold text-slate-900">Your Contact Information</h2>
+                <div className="space-y-3">
+                  <Label htmlFor="fullName" className="text-lg font-semibold text-slate-900 block">
+                    Full Name
                   </Label>
                   <Input
-                    id="teamSize"
-                    name="teamSize"
-                    type="number"
-                    placeholder="e.g. 3"
-                    value={teamSize}
-                    onChange={(e) => setTeamSize(e.target.value)}
-                    className="rounded-xl py-6 max-w-xs mt-1"
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    placeholder="John Doe"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="rounded-xl py-6 max-w-md"
                   />
                 </div>
-              )}
-            </div>
+                <div className="space-y-3">
+                  <Label htmlFor="email" className="text-lg font-semibold text-slate-900 block">
+                    Email Address <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="johndoe@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="rounded-xl py-6 max-w-md"
+                    required
+                  />
+                </div>
+                <div className="space-y-3">
+                  <Label htmlFor="phone" className="text-lg font-semibold text-slate-900 block">
+                    Phone Number <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="(555) 123-4567"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="rounded-xl py-6 max-w-md"
+                    required
+                  />
+                </div>
+              </div>
 
-            <div className="space-y-3">
-              <Label htmlFor="experienceYears" className="text-lg font-semibold text-slate-900 block">
-                How many years of kitchen remodeling experience do you have?
-              </Label>
-              <Input
-                id="experienceYears"
-                name="experienceYears"
-                type="number"
-                placeholder="e.g. 5"
-                value={experienceYears}
-                onChange={(e) => setExperienceYears(e.target.value)}
-                className="rounded-xl py-6 max-w-xs"
-              />
-            </div>
+              <div className="bg-amber-50 border border-amber-200 rounded-xl px-3 py-6 space-y-3">
+                <div>
+                  <h3 className="font-bold text-amber-900 text-lg">READ BEFORE APPLYING:</h3>
+                  <p className="text-amber-800 text-sm leading-relaxed">
+                    This opportunity is best suited for lean teams that are willing to bid aggressively below their competition.
+                    We will be providing leads/estimates on a weekly basis at no cost to you. You will be taking home 85-90%
+                    of the job size.
+                  </p>
+                  <p className="text-amber-800 text-sm leading-relaxed mt-2">
+                    You will be representing Asha Interiors and must have excellent sales acumen and present yourself in a
+                    professional manner to customers.
+                  </p>
+                  <p className="text-amber-800 text-sm leading-relaxed mt-2">
+                    We aim to establish a long term business partnership and fill your calendar with consistent kitchen jobs.
+                    If these terms align with you and your business, please apply and we will reach out for an over-the-phone
+                    screening.
+                  </p>
+                </div>
 
-            <div className="space-y-3">
-              <Label className="text-lg font-semibold text-slate-900 block">
-                Scenario: You just finished an estimate with a client who wants a kitchen remodel. Would you be able to accurately calculate material and labor costs that same day?
-              </Label>
-              <RadioGroup
-                value={costEstimate}
-                onValueChange={setCostEstimate}
-                className="flex flex-col sm:flex-row gap-4"
-                name="costEstimate"
+                <div className="flex items-center space-x-2 pt-2">
+                  <Checkbox
+                    id="agreeTerms"
+                    name="agreeToTerms"
+                    checked={agreeToTerms}
+                    onCheckedChange={(checked) => setAgreeToTerms(checked === true)}
+                  />
+                  <Label htmlFor="agreeTerms" className="text-sm font-medium text-amber-900 cursor-pointer">
+                    I agree to these terms
+                  </Label>
+                </div>
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmitting || !agreeToTerms}
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-8 text-lg font-bold w-full shadow-lg shadow-blue-200 transition-all active:scale-95"
               >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="yes" id="costYes" />
-                  <Label htmlFor="costYes">Yes</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="no" id="costNo" />
-                  <Label htmlFor="costNo">No</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="partially" id="costPartial" />
-                  <Label htmlFor="costPartial">Partially within 24 hours</Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            <div className="space-y-3">
-              <Label className="text-lg font-semibold text-slate-900 block">
-                Are you comfortable designing your own blueprints/designs for clients?
-              </Label>
-              <RadioGroup
-                value={blueprintDesign}
-                onValueChange={setBlueprintDesign}
-                className="flex flex-col sm:flex-row gap-4"
-                name="blueprintDesign"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="yes" id="blueprintYes" />
-                  <Label htmlFor="blueprintYes">Yes</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="no" id="blueprintNo" />
-                  <Label htmlFor="blueprintNo">No</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="withHelp" id="blueprintHelp" />
-                  <Label htmlFor="blueprintHelp">With some help</Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            <div className="space-y-6">
-              <h2 className="text-xl font-bold text-slate-900">Your Contact Information</h2>
-              <div className="space-y-3">
-                <Label htmlFor="fullName" className="text-lg font-semibold text-slate-900 block">
-                  Full Name
-                </Label>
-                <Input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  placeholder="John Doe"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  className="rounded-xl py-6 max-w-md"
-                />
-              </div>
-              <div className="space-y-3">
-                <Label htmlFor="email" className="text-lg font-semibold text-slate-900 block">
-                  Email Address <span className="text-red-500">*</span>
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="johndoe@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="rounded-xl py-6 max-w-md"
-                  required
-                />
-              </div>
-              <div className="space-y-3">
-                <Label htmlFor="phone" className="text-lg font-semibold text-slate-900 block">
-                  Phone Number <span className="text-red-500">*</span>
-                </Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="(555) 123-4567"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="rounded-xl py-6 max-w-md"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="bg-amber-50 border border-amber-200 rounded-xl px-3 py-6 space-y-3">
-              <div>
-                <h3 className="font-bold text-amber-900 text-lg">READ BEFORE APPLYING:</h3>
-                <p className="text-amber-800 text-sm leading-relaxed">
-                  This opportunity is best suited for lean teams that are willing to bid aggressively below their competition.
-                  We will be providing leads/estimates on a weekly basis at no cost to you. You will be taking home 85-90%
-                  of the job size.
-                </p>
-                <p className="text-amber-800 text-sm leading-relaxed mt-2">
-                  You will be representing Asha Interiors and must have excellent sales acumen and present yourself in a
-                  professional manner to customers.
-                </p>
-                <p className="text-amber-800 text-sm leading-relaxed mt-2">
-                  We aim to establish a long term business partnership and fill your calendar with consistent kitchen jobs.
-                  If these terms align with you and your business, please apply and we will reach out for an over-the-phone
-                  screening.
-                </p>
-              </div>
-
-              <div className="flex items-center space-x-2 pt-2">
-                <Checkbox
-                  id="agreeTerms"
-                  name="agreeToTerms"
-                  checked={agreeToTerms}
-                  onCheckedChange={(checked) => setAgreeToTerms(checked === true)}
-                />
-                <Label htmlFor="agreeTerms" className="text-sm font-medium text-amber-900 cursor-pointer">
-                  I agree to these terms
-                </Label>
-              </div>
-            </div>
-
-            <Button
-              type="submit"
-              disabled={isSubmitting || !agreeToTerms}
-              className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-8 text-lg font-bold w-full shadow-lg shadow-blue-200 transition-all active:scale-95"
-            >
-              {isSubmitting ? (
-                <div className="flex items-center gap-2">
-                  <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  Submitting...
-                </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <Send className="h-5 w-5" />
-                  Submit Application
-                </div>
-              )}
-            </Button>
-          </form>
+                {isSubmitting ? (
+                  <div className="flex items-center gap-2">
+                    <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Submitting...
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <Send className="h-5 w-5" />
+                    Submit Application
+                  </div>
+                )}
+              </Button>
+            </form>
+          )}
         </div>
       </section>
 
