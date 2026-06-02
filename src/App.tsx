@@ -13,6 +13,7 @@ import Countertops from "./pages/Countertops";
 import FullRemodels from "./pages/FullRemodels";
 import Apply from "./pages/Apply";
 import ScrollToTop from "./components/ScrollToTop";
+import PixelTracker from "./components/PixelTracker";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <PixelTracker />
         <StickyCallButton />
         <Routes>
           <Route path="/" element={<Index />} />
