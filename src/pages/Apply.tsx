@@ -93,10 +93,15 @@ function Apply() {
 
       if (response.ok) {
         showSuccess("Application submitted! We'll be in touch shortly.");
+        
         // Fire Facebook Lead event
         if (typeof window.fbq === "function") {
+          console.log("Fired Meta Pixel 'Lead' event successfully.");
           window.fbq("track", "Lead");
+        } else {
+          console.warn("Meta Pixel (fbq) is not initialized on this page yet.");
         }
+
         formRef.current?.reset();
         setFullName("");
         setEmail("");
