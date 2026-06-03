@@ -150,8 +150,8 @@ function Estimate() {
       
       {/* Header section with Centered non-redirect logo and structured trust bar */}
       <header className="bg-white border-b border-slate-100 shadow-sm">
-        <div className="pt-6 px-4 flex flex-col items-center text-center">
-          <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-blue-100 overflow-hidden mb-3 pointer-events-none select-none">
+        <div className="pt-5 px-4 flex flex-col items-center text-center">
+          <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-blue-100 overflow-hidden mb-2.5 pointer-events-none select-none">
             <img 
               src={logoImg} 
               alt="Asha Interiors Logo" 
@@ -161,28 +161,28 @@ function Estimate() {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight max-w-xl mx-auto">
             Get a <span className="text-blue-600">FREE Kitchen Remodel Estimate</span> For Your Property
           </h1>
-          <p className="text-slate-500 font-medium text-sm sm:text-base mt-2 mb-4 flex items-center gap-1.5 justify-center">
+          <p className="text-slate-500 font-medium text-sm sm:text-base mt-1.5 mb-3 flex items-center gap-1.5 justify-center">
             Only takes 10 seconds 👇
           </p>
         </div>
 
         {/* 2x2 Trust Badges Bar */}
-        <div className="bg-[#f28e43] py-3.5 px-6 border-t border-orange-400/20 text-white">
-          <div className="max-w-md mx-auto grid grid-cols-2 gap-x-6 gap-y-2.5 font-bold text-sm sm:text-base">
-            <div className="flex items-center gap-2.5">
-              <Star className="h-5 w-5 fill-white text-[#f28e43]" />
+        <div className="bg-[#f28e43] py-2 px-6 border-t border-orange-400/20 text-white">
+          <div className="max-w-md mx-auto grid grid-cols-2 gap-x-6 gap-y-1.5 font-bold text-sm sm:text-base">
+            <div className="flex items-center gap-2">
+              <Star className="h-4.5 w-4.5 fill-green-400 text-green-400" />
               <span>Quality Guarantee</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <Clock className="h-5 w-5 stroke-[2.5px]" />
+            <div className="flex items-center gap-2">
+              <Clock className="h-4.5 w-4.5 text-green-400 stroke-[3px]" />
               <span>Fast Quotes</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <ThumbsUp className="h-5 w-5 fill-white text-[#f28e43]" />
+            <div className="flex items-center gap-2">
+              <ThumbsUp className="h-4.5 w-4.5 fill-green-400 text-green-400" />
               <span>No Hidden Fees</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <CheckCircle2 className="h-5 w-5 stroke-[2.5px]" />
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4.5 w-4.5 text-green-400 stroke-[3px]" />
               <span>Licensed & Insured</span>
             </div>
           </div>
