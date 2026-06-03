@@ -168,16 +168,16 @@ function Estimate() {
               <ShieldCheck className="h-3.5 w-3.5 text-green-600" />
               Quality guarantee
             </span>
-            <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-blue-100">
-              <DollarSign className="h-3.5 w-3.5 text-blue-600" />
+            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
+              <DollarSign className="h-3.5 w-3.5 text-green-600" />
               No hidden fees
             </span>
-            <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-amber-100">
-              <Zap className="h-3.5 w-3.5 text-amber-600" />
+            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
+              <Zap className="h-3.5 w-3.5 text-green-600" />
               Fast quotes
             </span>
-            <span className="inline-flex items-center gap-1 bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-purple-100">
-              <FileText className="h-3.5 w-3.5 text-purple-600" />
+            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
+              <FileText className="h-3.5 w-3.5 text-green-600" />
               Licensed and insured
             </span>
           </div>
