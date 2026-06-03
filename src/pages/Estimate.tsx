@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { showSuccess, showError } from "@/utils/toast";
 import { CheckCircle2, ChevronRight, ChevronLeft, AlertCircle, ArrowLeft, ShieldCheck, DollarSign, Zap, FileText } from "lucide-react";
 import logoImg from "@/assets/logo.jpg";
@@ -65,6 +64,29 @@ function Estimate() {
         return firstName.trim() !== "" && isPhoneValid && isEmailValid;
       default:
         return false;
+    }
+  };
+
+  const handleOptionSelect = (step: number, value: string) => {
+    if (step === 1) {
+      setHomeType(value);
+      setTimeout(() => {
+        setCurrentStep(2);
+      }, 200);
+    } else if (step === 2) {
+      setTimeline(value);
+      setTimeout(() => {
+        setCurrentStep(3);
+      }, 200);
+    } else if (step === 3) {
+      setWithinRadius(value);
+      if (value === "no") {
+        showError("Kindly exit the page. We currently only service within 40 miles of Phoenix, AZ.");
+      } else {
+        setTimeout(() => {
+          setCurrentStep(4);
+        }, 200);
+      }
     }
   };
 
@@ -251,31 +273,28 @@ function Estimate() {
                     <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">1</span>
                     Which best describes your home?
                   </Label>
-                  <RadioGroup
-                    value={homeType}
-                    onValueChange={setHomeType}
-                    className="grid grid-cols-1 gap-2.5"
-                  >
+                  <div className="grid grid-cols-1 gap-2.5">
                     {[
                       { value: "single-family", label: "Single family home" },
                       { value: "townhouse-duplex", label: "Townhouse or duplex" },
                       { value: "mobile-other", label: "Mobile home or other" },
                       { value: "commercial", label: "Commercial building" }
                     ].map((item) => (
-                      <label
+                      <button
                         key={item.value}
-                        htmlFor={`home-${item.value}`}
-                        className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                        type="button"
+                        onClick={() => handleOptionSelect(1, item.value)}
+                        className={`flex items-center justify-between border rounded-xl p-4 cursor-pointer transition-all text-left w-full ${
                           homeType === item.value 
                             ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
                             : "border-slate-200 hover:bg-slate-50"
                         }`}
                       >
-                        <RadioGroupItem value={item.value} id={`home-${item.value}`} />
                         <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
-                      </label>
+                        <ChevronRight className={`h-5 w-5 transition-transform ${homeType === item.value ? "text-blue-600 translate-x-1" : "text-slate-400"}`} />
+                      </button>
                     ))}
-                  </RadioGroup>
+                  </div>
                 </div>
               )}
 
@@ -286,31 +305,28 @@ function Estimate() {
                     <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">2</span>
                     When are you hoping to have this project completed?
                   </Label>
-                  <RadioGroup
-                    value={timeline}
-                    onValueChange={setTimeline}
-                    className="grid grid-cols-1 gap-2.5"
-                  >
+                  <div className="grid grid-cols-1 gap-2.5">
                     {[
                       { value: "asap", label: "ASAP" },
                       { value: "this-month", label: "This month" },
                       { value: "next-month", label: "Next month" },
                       { value: "no-preference", label: "No preference" }
                     ].map((item) => (
-                      <label
+                      <button
                         key={item.value}
-                        htmlFor={`time-${item.value}`}
-                        className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                        type="button"
+                        onClick={() => handleOptionSelect(2, item.value)}
+                        className={`flex items-center justify-between border rounded-xl p-4 cursor-pointer transition-all text-left w-full ${
                           timeline === item.value 
                             ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
                             : "border-slate-200 hover:bg-slate-50"
                         }`}
                       >
-                        <RadioGroupItem value={item.value} id={`time-${item.value}`} />
                         <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
-                      </label>
+                        <ChevronRight className={`h-5 w-5 transition-transform ${timeline === item.value ? "text-blue-600 translate-x-1" : "text-slate-400"}`} />
+                      </button>
                     ))}
-                  </RadioGroup>
+                  </div>
                 </div>
               )}
 
@@ -321,29 +337,26 @@ function Estimate() {
                     <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">3</span>
                     Are you within a 40-mile distance from Phoenix, AZ?
                   </Label>
-                  <RadioGroup
-                    value={withinRadius}
-                    onValueChange={setWithinRadius}
-                    className="grid grid-cols-2 gap-2.5"
-                  >
+                  <div className="grid grid-cols-2 gap-2.5">
                     {[
                       { value: "yes", label: "Yes" },
                       { value: "no", label: "No" }
                     ].map((item) => (
-                      <label
+                      <button
                         key={item.value}
-                        htmlFor={`radius-${item.value}`}
-                        className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                        type="button"
+                        onClick={() => handleOptionSelect(3, item.value)}
+                        className={`flex items-center justify-between border rounded-xl p-4 cursor-pointer transition-all text-left w-full ${
                           withinRadius === item.value 
                             ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
                             : "border-slate-200 hover:bg-slate-50"
                         }`}
                       >
-                        <RadioGroupItem value={item.value} id={`radius-${item.value}`} />
                         <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
-                      </label>
+                        <ChevronRight className={`h-5 w-5 transition-transform ${withinRadius === item.value ? "text-blue-600 translate-x-1" : "text-slate-400"}`} />
+                      </button>
                     ))}
-                  </RadioGroup>
+                  </div>
                   
                   {withinRadius === "no" && (
                     <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex gap-3 text-red-800 animate-in fade-in slide-in-from-top-2 duration-300">
@@ -477,17 +490,19 @@ function Estimate() {
                   </Button>
                 )}
                 
-                {currentStep < totalSteps ? (
+                {currentStep === 4 && (
                   <Button
                     type="button"
                     onClick={handleNext}
-                    disabled={currentStep === 3 && withinRadius === "no"}
+                    disabled={!isStepValid(4)}
                     className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6 font-bold gap-2 disabled:opacity-50"
                   >
                     Next
                     <ChevronRight className="h-5 w-5" />
                   </Button>
-                ) : (
+                )}
+
+                {currentStep === 5 && (
                   <Button
                     type="button"
                     onClick={handleSubmit}
