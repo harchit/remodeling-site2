@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import { showSuccess, showError } from "@/utils/toast";
-import { CheckCircle2, ChevronRight, ChevronLeft, AlertCircle, ArrowLeft } from "lucide-react";
+import { CheckCircle2, ChevronRight, ChevronLeft, AlertCircle, ArrowLeft, ShieldCheck, DollarSign, Zap, FileText } from "lucide-react";
 import logoImg from "@/assets/logo.jpg";
 
 function Estimate() {
@@ -148,7 +148,7 @@ function Estimate() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between font-sans">
       
-      {/* Header section with Centered non-redirect logo */}
+      {/* Header section with Centered non-redirect logo and trust banners */}
       <header className="bg-white border-b border-slate-100 py-6 px-4 shadow-sm">
         <div className="max-w-xl mx-auto flex flex-col items-center text-center">
           <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-blue-100 overflow-hidden mb-3 pointer-events-none select-none">
@@ -161,7 +161,28 @@ function Estimate() {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
             Get a <span className="text-blue-600">FREE Kitchen Remodel Estimate</span> For Your Property
           </h1>
-          <p className="text-slate-500 font-medium text-sm sm:text-base mt-2 flex items-center gap-1.5 justify-center">
+          
+          {/* Trust Badges Row */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-4 max-w-lg">
+            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
+              <ShieldCheck className="h-3.5 w-3.5 text-green-600" />
+              Quality guarantee
+            </span>
+            <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-blue-100">
+              <DollarSign className="h-3.5 w-3.5 text-blue-600" />
+              No hidden fees
+            </span>
+            <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-amber-100">
+              <Zap className="h-3.5 w-3.5 text-amber-600" />
+              Fast quotes
+            </span>
+            <span className="inline-flex items-center gap-1 bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-purple-100">
+              <FileText className="h-3.5 w-3.5 text-purple-600" />
+              Licensed and insured
+            </span>
+          </div>
+
+          <p className="text-slate-500 font-medium text-sm sm:text-base mt-3.5 flex items-center gap-1.5 justify-center">
             Only takes 10 seconds 👇
           </p>
         </div>
