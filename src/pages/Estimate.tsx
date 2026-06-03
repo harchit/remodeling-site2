@@ -15,8 +15,6 @@ function Estimate() {
   const [homeType, setHomeType] = useState("");
   const [timeline, setTimeline] = useState("");
   const [withinRadius, setWithinRadius] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [city, setCity] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
@@ -57,7 +55,7 @@ function Estimate() {
       case 3:
         return withinRadius === "yes";
       case 4:
-        return streetAddress.trim() !== "" && city.trim() !== "" && /^\d{5}$/.test(zipCode);
+        return /^\d{5}$/.test(zipCode);
       case 5:
         const isPhoneValid = /^\(\d{3}\)\s\d{3}-\d{4}$/.test(phone);
         const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -127,8 +125,6 @@ function Estimate() {
     formData.append("Home Type", homeType);
     formData.append("Completion Target", timeline);
     formData.append("Within Radius of Phoenix", withinRadius);
-    formData.append("Street Address", streetAddress);
-    formData.append("City", city);
     formData.append("Zip Code", zipCode);
     formData.append("First Name", firstName);
     formData.append("Phone Number", phone);
@@ -233,8 +229,6 @@ function Estimate() {
                 setHomeType("");
                 setTimeline("");
                 setWithinRadius("");
-                setStreetAddress("");
-                setCity("");
                 setZipCode("");
                 setFirstName("");
                 setPhone("");
@@ -369,38 +363,14 @@ function Estimate() {
                 </div>
               )}
 
-              {/* STEP 4: Project Address */}
+              {/* STEP 4: Project Zip Code */}
               {currentStep === 4 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
                   <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
                     <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">4</span>
-                    What is the address of this project?
+                    What is your zip code?
                   </Label>
                   <div className="space-y-3">
-                    <div>
-                      <Label htmlFor="street" className="text-xs text-slate-500 font-bold uppercase mb-1 block">Street Address</Label>
-                      <Input
-                        id="street"
-                        type="text"
-                        placeholder="123 Camelback Rd"
-                        value={streetAddress}
-                        onChange={(e) => setStreetAddress(e.target.value)}
-                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="city" className="text-xs text-slate-500 font-bold uppercase mb-1 block">City</Label>
-                      <Input
-                        id="city"
-                        type="text"
-                        placeholder="Phoenix"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
-                        required
-                      />
-                    </div>
                     <div>
                       <div className="flex justify-between items-center mb-1">
                         <Label htmlFor="zip" className="text-xs text-slate-500 font-bold uppercase block">Zip Code</Label>
@@ -415,7 +385,7 @@ function Estimate() {
                         maxLength={5}
                         value={zipCode}
                         onChange={handleZipChange}
-                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
+                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80 text-lg"
                         required
                       />
                     </div>
