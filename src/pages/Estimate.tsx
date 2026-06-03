@@ -5,11 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Progress } from "@/components/ui/progress";
 import { showSuccess, showError } from "@/utils/toast";
-import { CheckCircle2, ChevronRight, AlertCircle, ArrowLeft } from "lucide-react";
+import { CheckCircle2, ChevronRight, ChevronLeft, AlertCircle, ArrowLeft } from "lucide-react";
 import logoImg from "@/assets/logo.jpg";
 
 function Estimate() {
+  const [currentStep, setCurrentStep] = useState(1);
+  const totalSteps = 5;
+
   const [homeType, setHomeType] = useState("");
   const [timeline, setTimeline] = useState("");
   const [withinRadius, setWithinRadius] = useState("");
@@ -45,21 +49,39 @@ function Estimate() {
     setZipCode(val);
   };
 
-  const isFormValid = () => {
-    const isZipValid = /^\d{5}$/.test(zipCode);
-    const isPhoneValid = /^\(\d{3}\)\s\d{3}-\d{4}$/.test(phone);
-    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isStepValid = (step: number) => {
+    switch (step) {
+      case 1:
+        return homeType !== "";
+      case 2:
+        return timeline !== "";
+      case 3:
+        return withinRadius === "yes";
+      case 4:
+        return streetAddress.trim() !== "" && /^\d{5}$/.test(zipCode);
+      case 5:
+        const isPhoneValid = /^\(\d{3}\)\s\d{3}-\d{4}$/.test(phone);
+        const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        return firstName.trim() !== "" && isPhoneValid && isEmailValid;
+      default:
+        return false;
+    }
+  };
 
-    return (
-      homeType !== "" &&
-      timeline !== "" &&
-      withinRadius === "yes" &&
-      streetAddress.trim() !== "" &&
-      isZipValid &&
-      firstName.trim() !== "" &&
-      isPhoneValid &&
-      isEmailValid
-    );
+  const handleNext = () => {
+    if (currentStep === 3 && withinRadius === "no") {
+      showError("Kindly exit the page. We currently only service within 40 miles of Phoenix, AZ.");
+      return;
+    }
+    if (isStepValid(currentStep)) {
+      setCurrentStep((prev) => Math.min(prev + 1, totalSteps));
+    } else {
+      showError("Please complete the current question to proceed.");
+    }
+  };
+
+  const handlePrev = () => {
+    setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -70,7 +92,7 @@ function Estimate() {
       return;
     }
 
-    if (!isFormValid()) {
+    if (!isStepValid(5)) {
       showError("Please fill out all fields with valid information before submitting.");
       return;
     }
@@ -114,6 +136,8 @@ function Estimate() {
       setIsSubmitting(false);
     }
   };
+
+  const progressPercentage = (currentStep / totalSteps) * 100;
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between font-sans">
@@ -164,6 +188,7 @@ function Estimate() {
               variant="link" 
               onClick={() => {
                 setIsSubmitted(false);
+                setCurrentStep(1);
                 setHomeType("");
                 setTimeline("");
                 setWithinRadius("");
@@ -179,120 +204,135 @@ function Estimate() {
             </Button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-xl space-y-8">
+          <div className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
             
-            {/* Field 1: Home Description */}
-            <div className="space-y-4">
-              <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">1</span>
-                Which best describes your home?
-              </Label>
-              <RadioGroup
-                value={homeType}
-                onValueChange={setHomeType}
-                className="grid grid-cols-1 gap-2.5"
-              >
-                {[
-                  { value: "single-family", label: "Single family home" },
-                  { value: "townhouse-duplex", label: "Townhouse or duplex" },
-                  { value: "mobile-other", label: "Mobile home or other" },
-                  { value: "commercial", label: "Commercial building" }
-                ].map((item) => (
-                  <label
-                    key={item.value}
-                    htmlFor={`home-${item.value}`}
-                    className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
-                      homeType === item.value 
-                        ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
-                        : "border-slate-200 hover:bg-slate-50"
-                    }`}
-                  >
-                    <RadioGroupItem value={item.value} id={`home-${item.value}`} />
-                    <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
-                  </label>
-                ))}
-              </RadioGroup>
+            {/* Step Progress Indicator */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-400">
+                <span>Progress</span>
+                <span>Question {currentStep} of {totalSteps}</span>
+              </div>
+              <Progress value={progressPercentage} className="h-2 bg-slate-100" />
             </div>
 
-            {/* Field 2: Completed Timeline */}
-            <div className="space-y-4">
-              <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">2</span>
-                When are you hoping to have this project completed?
-              </Label>
-              <RadioGroup
-                value={timeline}
-                onValueChange={setTimeline}
-                className="grid grid-cols-2 gap-2.5"
-              >
-                {[
-                  { value: "asap", label: "ASAP" },
-                  { value: "this-month", label: "This month" },
-                  { value: "next-month", label: "Next month" },
-                  { value: "no-preference", label: "No preference" }
-                ].map((item) => (
-                  <label
-                    key={item.value}
-                    htmlFor={`time-${item.value}`}
-                    className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
-                      timeline === item.value 
-                        ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
-                        : "border-slate-200 hover:bg-slate-50"
-                    }`}
-                  >
-                    <RadioGroupItem value={item.value} id={`time-${item.value}`} />
-                    <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
-                  </label>
-                ))}
-              </RadioGroup>
-            </div>
-
-            {/* Field 3: 40-mile service eligibility */}
-            <div className="space-y-4">
-              <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">3</span>
-                Are you within a 40-mile distance from Phoenix, AZ?
-              </Label>
-              <RadioGroup
-                value={withinRadius}
-                onValueChange={setWithinRadius}
-                className="grid grid-cols-2 gap-2.5"
-              >
-                {[
-                  { value: "yes", label: "Yes" },
-                  { value: "no", label: "No" }
-                ].map((item) => (
-                  <label
-                    key={item.value}
-                    htmlFor={`radius-${item.value}`}
-                    className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
-                      withinRadius === item.value 
-                        ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
-                        : "border-slate-200 hover:bg-slate-50"
-                    }`}
-                  >
-                    <RadioGroupItem value={item.value} id={`radius-${item.value}`} />
-                    <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
-                  </label>
-                ))}
-              </RadioGroup>
+            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
               
-              {withinRadius === "no" && (
-                <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex gap-3 text-red-800 animate-in fade-in slide-in-from-top-2 duration-300">
-                  <AlertCircle className="h-5 w-5 text-red-600 shrink-0 mt-0.5" />
-                  <p className="text-sm leading-relaxed">
-                    <strong>Kindly exit this page.</strong> We currently only offer professional kitchen remodeling services within 40 miles of Phoenix, AZ. Thank you!
-                  </p>
+              {/* STEP 1: Home Type */}
+              {currentStep === 1 && (
+                <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">1</span>
+                    Which best describes your home?
+                  </Label>
+                  <RadioGroup
+                    value={homeType}
+                    onValueChange={setHomeType}
+                    className="grid grid-cols-1 gap-2.5"
+                  >
+                    {[
+                      { value: "single-family", label: "Single family home" },
+                      { value: "townhouse-duplex", label: "Townhouse or duplex" },
+                      { value: "mobile-other", label: "Mobile home or other" },
+                      { value: "commercial", label: "Commercial building" }
+                    ].map((item) => (
+                      <label
+                        key={item.value}
+                        htmlFor={`home-${item.value}`}
+                        className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                          homeType === item.value 
+                            ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                            : "border-slate-200 hover:bg-slate-50"
+                        }`}
+                      >
+                        <RadioGroupItem value={item.value} id={`home-${item.value}`} />
+                        <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
+                      </label>
+                    ))}
+                  </RadioGroup>
                 </div>
               )}
-            </div>
 
-            {withinRadius === "yes" && (
-              <div className="space-y-6 pt-2 border-t border-slate-100 animate-in fade-in slide-in-from-top-4 duration-500">
-                
-                {/* Field 4: Project Address */}
-                <div className="space-y-4">
-                  <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
+              {/* STEP 2: Timeline */}
+              {currentStep === 2 && (
+                <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">2</span>
+                    When are you hoping to have this project completed?
+                  </Label>
+                  <RadioGroup
+                    value={timeline}
+                    onValueChange={setTimeline}
+                    className="grid grid-cols-1 gap-2.5"
+                  >
+                    {[
+                      { value: "asap", label: "ASAP" },
+                      { value: "this-month", label: "This month" },
+                      { value: "next-month", label: "Next month" },
+                      { value: "no-preference", label: "No preference" }
+                    ].map((item) => (
+                      <label
+                        key={item.value}
+                        htmlFor={`time-${item.value}`}
+                        className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                          timeline === item.value 
+                            ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                            : "border-slate-200 hover:bg-slate-50"
+                        }`}
+                      >
+                        <RadioGroupItem value={item.value} id={`time-${item.value}`} />
+                        <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
+                      </label>
+                    ))}
+                  </RadioGroup>
+                </div>
+              )}
+
+              {/* STEP 3: Within Radius */}
+              {currentStep === 3 && (
+                <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">3</span>
+                    Are you within a 40-mile distance from Phoenix, AZ?
+                  </Label>
+                  <RadioGroup
+                    value={withinRadius}
+                    onValueChange={setWithinRadius}
+                    className="grid grid-cols-2 gap-2.5"
+                  >
+                    {[
+                      { value: "yes", label: "Yes" },
+                      { value: "no", label: "No" }
+                    ].map((item) => (
+                      <label
+                        key={item.value}
+                        htmlFor={`radius-${item.value}`}
+                        className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                          withinRadius === item.value 
+                            ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                            : "border-slate-200 hover:bg-slate-50"
+                        }`}
+                      >
+                        <RadioGroupItem value={item.value} id={`radius-${item.value}`} />
+                        <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
+                      </label>
+                    ))}
+                  </RadioGroup>
+                  
+                  {withinRadius === "no" && (
+                    <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex gap-3 text-red-800 animate-in fade-in slide-in-from-top-2 duration-300">
+                      <AlertCircle className="h-5 w-5 text-red-600 shrink-0 mt-0.5" />
+                      <p className="text-sm leading-relaxed">
+                        <strong>Kindly exit this page.</strong> We currently only offer professional kitchen remodeling services within 40 miles of Phoenix, AZ. Thank you!
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* STEP 4: Project Address */}
+              {currentStep === 4 && (
+                <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
                     <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">4</span>
                     What is the address of this project?
                   </Label>
@@ -329,10 +369,12 @@ function Estimate() {
                     </div>
                   </div>
                 </div>
+              )}
 
-                {/* Field 5: Contact Details */}
-                <div className="space-y-4 pt-2 border-t border-slate-100">
-                  <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
+              {/* STEP 5: Name and Contact */}
+              {currentStep === 5 && (
+                <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
                     <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">5</span>
                     What's your name, cell phone, and email address?
                   </Label>
@@ -353,7 +395,7 @@ function Estimate() {
                       <div className="flex justify-between items-center mb-1">
                         <Label htmlFor="phoneField" className="text-xs text-slate-500 font-bold uppercase block">Phone Number</Label>
                         {phone && phone.length < 14 && (
-                          <span className="text-xs text-amber-600 font-medium">Use format: (xxx) xxx-xxxx</span>
+                          <span className="text-xs text-amber-600 font-medium">Format: (xxx) xxx-xxxx</span>
                         )}
                       </div>
                       <Input
@@ -380,27 +422,56 @@ function Estimate() {
                     </div>
                   </div>
                 </div>
+              )}
 
-                <Button
-                  type="submit"
-                  disabled={isSubmitting || !isFormValid()}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-8 text-lg font-extrabold shadow-lg shadow-blue-200 transition-all active:scale-95 flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:pointer-events-none"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Sending Lead Detail...
-                    </>
-                  ) : (
-                    <>
-                      Submit Request
-                      <ChevronRight className="h-5 w-5" />
-                    </>
-                  )}
-                </Button>
+              {/* Multi-step Button Controls */}
+              <div className="flex gap-3 pt-4 border-t border-slate-100">
+                {currentStep > 1 && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={handlePrev}
+                    className="flex-1 rounded-xl py-6 border-slate-200 text-slate-600 hover:bg-slate-50 font-semibold gap-2"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                    Previous
+                  </Button>
+                )}
+                
+                {currentStep < totalSteps ? (
+                  <Button
+                    type="button"
+                    onClick={handleNext}
+                    disabled={currentStep === 3 && withinRadius === "no"}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6 font-bold gap-2 disabled:opacity-50"
+                  >
+                    Next
+                    <ChevronRight className="h-5 w-5" />
+                  </Button>
+                ) : (
+                  <Button
+                    type="button"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting || !isStepValid(5)}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6 font-extrabold gap-2 disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Submit Request
+                        <CheckCircle2 className="h-5 w-5" />
+                      </>
+                    )}
+                  </Button>
+                )}
               </div>
-            )}
-          </form>
+
+            </form>
+          </div>
         )}
       </main>
 

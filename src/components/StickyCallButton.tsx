@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLocation } from "react-router-dom";
 
 const StickyCallButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +15,11 @@ const StickyCallButton = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Hide the floating call button entirely on the /estimate page
+  if (location.pathname === "/estimate") {
+    return null;
+  }
 
   return (
     <div
