@@ -35,17 +35,17 @@ const Index = () => {
   const testimonials = [
     {
       name: "Sarah M.",
-      text: "Asha Interiors transformed our kitchen! Their team was professional, and our new custom cabinets are absolutely gorgeous. Highly recommended in Houston.",
+      text: "Asha Interiors transformed our kitchen! Their team was professional, and our new custom cabinets are absolutely gorgeous. Highly recommended in Phoenix.",
       rating: 5,
     },
     {
       name: "David T.",
-      text: "The full kitchen remodel they did for us in Dallas exceeded all our expectations. The custom island and quartz countertops are stunning.",
+      text: "The full kitchen remodel they did for us in Chandler exceeded all our expectations. The custom island and quartz countertops are stunning.",
       rating: 5,
     },
     {
       name: "Jessica R.",
-      text: "Great experience from start to finish. They helped us design the perfect kitchen layout for our family in San Antonio. Excellent communication and quality work.",
+      text: "Great experience from start to finish. They helped us design the perfect kitchen layout for our family in Queen Creek. Excellent communication and quality work.",
       rating: 5,
     },
   ];
@@ -70,7 +70,7 @@ const Index = () => {
           <div className="flex flex-col gap-6 max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider w-fit">
               <MapPin className="h-4 w-4 text-blue-400" />
-              Serving Houston, Dallas & San Antonio
+              Serving Maricopa & Pinal County, AZ
             </div>
             
             <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1]">
@@ -78,7 +78,7 @@ const Index = () => {
             </h1>
             
             <p className="text-lg lg:text-xl text-slate-200 max-w-xl leading-relaxed mt-2">
-              Asha Interiors specializes in custom cabinetry, premium countertops, and full kitchen remodels. Transform your culinary space with Texas's premier kitchen renovators.
+              Asha Interiors specializes in custom cabinetry, premium countertops, and full kitchen remodels. Transform your culinary space with Arizona's premier kitchen renovators.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-6">
@@ -110,7 +110,7 @@ const Index = () => {
                     <Star key={i} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <span className="text-sm font-bold text-white">Hundreds of Happy Texas Families</span>
+                <span className="text-sm font-bold text-white">Hundreds of Happy Arizona Families</span>
               </div>
             </div>
           </div>
@@ -180,7 +180,7 @@ const Index = () => {
           <div className="order-2 lg:order-1">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=800" alt="Beautiful Texas Kitchen" className="rounded-2xl shadow-lg w-full aspect-square object-cover" />
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=800" alt="Beautiful Arizona Kitchen" className="rounded-2xl shadow-lg w-full aspect-square object-cover" />
                 <div className="bg-blue-600 p-8 rounded-2xl text-white shadow-lg">
                   <p className="text-4xl font-bold mb-2">100%</p>
                   <p className="text-sm font-medium opacity-80 uppercase tracking-wider">Custom Designs</p>
@@ -188,8 +188,8 @@ const Index = () => {
               </div>
               <div className="space-y-4 pt-8">
                 <div className="bg-slate-900 p-8 rounded-2xl text-white shadow-lg">
-                  <p className="text-4xl font-bold mb-2">3</p>
-                  <p className="text-sm font-medium opacity-80 uppercase tracking-wider">Major Texas Cities</p>
+                  <p className="text-4xl font-bold mb-2">2</p>
+                  <p className="text-sm font-medium opacity-80 uppercase tracking-wider">Major Arizona Counties</p>
                 </div>
                 <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=500" alt="Kitchen Remodeling Process" className="rounded-2xl shadow-lg aspect-square object-cover" />
               </div>
@@ -197,9 +197,9 @@ const Index = () => {
           </div>
           <div className="order-1 lg:order-2 flex flex-col gap-8">
             <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm">Why Choose Asha Interiors</h2>
-            <h3 className="text-4xl font-bold text-slate-900">Texas's Premier Kitchen Remodeling Experts</h3>
+            <h3 className="text-4xl font-bold text-slate-900">Arizona's Premier Kitchen Remodeling Experts</h3>
             <p className="text-slate-600 leading-relaxed">
-              Remodeling your kitchen is a significant investment in your home. At Asha Interiors, we guide you through every step of the process—from initial 3D design to the final cabinet installation. Serving Houston, Dallas, and San Antonio, our commitment to quality craftsmanship ensures a stunning result.
+              Remodeling your kitchen is a significant investment in your home. At Asha Interiors, we guide you through every step of the process—from initial 3D design to the final cabinet installation. Serving Maricopa and Pinal Counties, Arizona, our commitment to quality craftsmanship ensures a stunning result.
             </p>
             <ul className="space-y-4">
               {[

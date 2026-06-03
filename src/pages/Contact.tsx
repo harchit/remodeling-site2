@@ -37,7 +37,7 @@ const Contact = () => {
   const contactInfo = [
     {
       title: "Service Areas",
-      content: "Houston, Dallas, San Antonio (Texas)",
+      content: "Maricopa & Pinal Counties, Arizona",
       icon: <MapPin className="h-6 w-6 text-blue-600" />,
     },
     {
@@ -70,7 +70,7 @@ const Contact = () => {
           <div className="max-w-3xl">
             <h1 className="text-5xl font-extrabold mb-6">Contact <span className="text-blue-400">Asha Interiors</span></h1>
             <p className="text-xl text-slate-300 leading-relaxed">
-              Ready to build your dream kitchen? Reach out to our design and remodeling experts to schedule your consultation in Houston, Dallas, or San Antonio.
+              Ready to build your dream kitchen? Reach out to our design and remodeling experts to schedule your consultation in Maricopa or Pinal County.
             </p>
           </div>
         </div>

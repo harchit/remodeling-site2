@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
           </Link>
           <p className="text-sm leading-relaxed">
-            Premium custom kitchen remodeling serving Houston, Dallas, and San Antonio. 
+            Premium custom kitchen remodeling serving Maricopa and Pinal Counties, Arizona. 
             We turn your culinary dreams into reality with expert craftsmanship.
           </p>
           <div className="flex gap-4">
@@ -59,7 +59,7 @@ const Footer = () => {
           <ul className="flex flex-col gap-4 text-sm">
             <li className="flex items-start gap-3">
               <MapPin className="h-5 w-5 text-blue-400 shrink-0" />
-              <span>Proudly serving Houston, Dallas, & San Antonio areas</span>
+              <span>Proudly serving Maricopa & Pinal County areas</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone className="h-5 w-5 text-blue-400 shrink-0" />

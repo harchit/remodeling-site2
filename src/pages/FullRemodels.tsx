@@ -27,7 +27,7 @@ const FullRemodels = () => {
               Full <span className="text-blue-600">Kitchen</span> Remodels
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed">
-              When you want complete freedom of design, a full kitchen remodel is the answer. Create a true culinary masterpiece in your Houston, Dallas, or San Antonio home.
+              When you want complete freedom of design, a full kitchen remodel is the answer. Create a true culinary masterpiece in your Maricopa or Pinal County, AZ home.
             </p>
 
             {/* Layout Guidance Box */}

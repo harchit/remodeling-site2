@@ -35,7 +35,7 @@ const Cabinetry = () => {
               Custom <span className="text-blue-600">Kitchen Cabinetry</span>
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Custom cabinetry offers unparalleled versatility and storage without sacrificing beauty. Perfect for families looking to create a highly organized and stunning kitchen in Houston, Dallas, or San Antonio.
+              Custom cabinetry offers unparalleled versatility and storage without sacrificing beauty. Perfect for families looking to create a highly organized and stunning kitchen in Maricopa or Pinal Counties, AZ.
             </p>
 
             {/* What Actually Matters Guidance */}
@@ -109,7 +109,7 @@ const Cabinetry = () => {
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-8">
           <h2 className="text-4xl font-bold">Start Designing Your Custom Cabinets</h2>
           <p className="text-blue-100 text-lg">
-            Our Texas team is ready to help you choose the perfect wood, finish, and layout for your kitchen.
+            Our Arizona team is ready to help you choose the perfect wood, finish, and layout for your kitchen.
           </p>
           <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-slate-100 rounded-full px-10 py-8 text-xl">
             <a href="tel:2819326994" className="flex items-center gap-3">

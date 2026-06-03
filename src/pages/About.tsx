@@ -8,7 +8,7 @@ const About = () => {
   const values = [
     {
       title: "Quality Craftsmanship",
-      description: "We use only premium materials and proven installation techniques to ensure your kitchen lasts a lifetime in your Texas home.",
+      description: "We use only premium materials and proven installation techniques to ensure your kitchen lasts a lifetime in your Arizona home.",
       icon: <ShieldCheck className="h-8 w-8 text-blue-600" />,
     },
     {
@@ -34,7 +34,7 @@ const About = () => {
           <div className="max-w-3xl">
             <h1 className="text-5xl font-extrabold mb-6">About <span className="text-blue-200">Asha Interiors</span></h1>
             <p className="text-xl text-blue-100 leading-relaxed">
-              We are Texas's trusted custom kitchen remodelers, dedicated to transforming culinary spaces across Houston, Dallas, and San Antonio into breathtaking luxury retreats.
+              We are Arizona's trusted custom kitchen remodelers, dedicated to transforming culinary spaces across Maricopa and Pinal Counties into breathtaking luxury retreats.
             </p>
           </div>
         </div>
@@ -45,9 +45,9 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div className="flex flex-col gap-8">
             <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm">Our Story</h2>
-            <h3 className="text-4xl font-bold text-slate-900">Building Culinary Masterpieces in Texas</h3>
+            <h3 className="text-4xl font-bold text-slate-900">Building Culinary Masterpieces in Arizona</h3>
             <p className="text-slate-600 leading-relaxed">
-              At Asha Interiors, we understand that a kitchen is more than just a place to cook—it's the heart of the home, a gathering place for family, and a centerpiece for entertaining. We started with a vision to raise the standard of kitchen remodeling in Texas.
+              At Asha Interiors, we understand that a kitchen is more than just a place to cook—it's the heart of the home, a gathering place for family, and a centerpiece for entertaining. We started with a vision to raise the standard of kitchen remodeling in Arizona.
             </p>
             <p className="text-slate-600 leading-relaxed">
               Whether you choose custom cabinetry, premium countertops, or a full kitchen remodel, our team handles the entire process with meticulous attention to detail. From the initial 3D design rendering to the final hardware installation, we are with you every step of the way.
@@ -58,8 +58,8 @@ const About = () => {
                   <MapPin className="h-6 w-6 text-blue-600" />
                 </div>
                 <div>
-                  <p className="font-bold text-slate-900">Texas Wide</p>
-                  <p className="text-sm text-slate-500">Houston, Dallas, San Antonio</p>
+                  <p className="font-bold text-slate-900">Arizona Service</p>
+                  <p className="text-sm text-slate-500">Maricopa & Pinal Counties</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -117,7 +117,7 @@ const About = () => {
         <div className="max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-8">
           <h2 className="text-4xl font-bold">Ready to Design Your Dream Kitchen?</h2>
           <p className="text-slate-400 text-lg max-w-2xl">
-            Contact Asha Interiors today to schedule your design consultation in Houston, Dallas, or San Antonio.
+            Contact Asha Interiors today to schedule your design consultation in Maricopa or Pinal County.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 py-8 text-xl">

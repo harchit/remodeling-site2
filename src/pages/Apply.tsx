@@ -136,7 +136,7 @@ function Apply() {
               Join the <span className="text-blue-400">Asha Interiors</span> Team
             </h1>
             <p className="text-lg text-slate-300 leading-relaxed">
-              We are hiring experienced kitchen remodelers in Houston, Dallas, and San Antonio. 
+              We are hiring experienced kitchen remodelers in Maricopa and Pinal Counties, Arizona. 
               If you take pride in your craft, we want to hear from you.
             </p>
           </div>

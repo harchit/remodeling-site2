@@ -33,7 +33,7 @@ const Countertops = () => {
               Premium <span className="text-blue-600">Kitchen Countertops</span>
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Experience the ultimate blend of beauty and durability. Our premium countertops offer incredible resilience, a smooth finish, and a luxurious feel for your Texas kitchen.
+              Experience the ultimate blend of beauty and durability. Our premium countertops offer incredible resilience, a smooth finish, and a luxurious feel for your Arizona kitchen.
             </p>
 
             {/* Material Selection Guidance */}
@@ -76,7 +76,7 @@ const Countertops = () => {
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Why Premium Countertops?</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">The Smart Choice for Texas Kitchens</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">The Smart Choice for Arizona Kitchens</h3>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center justify-center">
@@ -108,7 +108,7 @@ const Countertops = () => {
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-8">
           <h2 className="text-4xl font-bold">Ready for a Premium Countertop Upgrade?</h2>
           <p className="text-slate-300 text-lg">
-            Let Asha Interiors install a beautiful, durable countertop in your Houston, Dallas, or San Antonio kitchen.
+            Let Asha Interiors install a beautiful, durable countertop in your Maricopa or Pinal County, AZ kitchen.
           </p>
           <Button asChild size="lg" className="bg-blue-600 text-white hover:bg-blue-700 rounded-full px-10 py-8 text-xl">
             <a href="tel:2819326994" className="flex items-center gap-3">
