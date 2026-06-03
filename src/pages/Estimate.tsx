@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import { showSuccess, showError } from "@/utils/toast";
-import { CheckCircle2, ChevronRight, ChevronLeft, AlertCircle, ArrowLeft, ShieldCheck, DollarSign, Zap, FileText } from "lucide-react";
+import { CheckCircle2, ChevronRight, ChevronLeft, AlertCircle, ArrowLeft, Star, Clock, ThumbsUp } from "lucide-react";
 import logoImg from "@/assets/logo.jpg";
 
 function Estimate() {
@@ -148,9 +148,9 @@ function Estimate() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between font-sans">
       
-      {/* Header section with Centered non-redirect logo and trust banners */}
-      <header className="bg-white border-b border-slate-100 py-6 px-4 shadow-sm">
-        <div className="max-w-xl mx-auto flex flex-col items-center text-center">
+      {/* Header section with Centered non-redirect logo and structured trust bar */}
+      <header className="bg-white border-b border-slate-100 shadow-sm">
+        <div className="pt-6 px-4 flex flex-col items-center text-center">
           <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-blue-100 overflow-hidden mb-3 pointer-events-none select-none">
             <img 
               src={logoImg} 
@@ -158,33 +158,34 @@ function Estimate() {
               className="w-full h-full object-cover scale-110"
             />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight max-w-xl mx-auto">
             Get a <span className="text-blue-600">FREE Kitchen Remodel Estimate</span> For Your Property
           </h1>
-          
-          {/* Trust Badges Row */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-4 max-w-lg">
-            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
-              <ShieldCheck className="h-3.5 w-3.5 text-green-600" />
-              Quality guarantee
-            </span>
-            <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-blue-100">
-              <DollarSign className="h-3.5 w-3.5 text-blue-600" />
-              No hidden fees
-            </span>
-            <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-amber-100">
-              <Zap className="h-3.5 w-3.5 text-amber-600" />
-              Fast quotes
-            </span>
-            <span className="inline-flex items-center gap-1 bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-purple-100">
-              <FileText className="h-3.5 w-3.5 text-purple-600" />
-              Licensed and insured
-            </span>
-          </div>
-
-          <p className="text-slate-500 font-medium text-sm sm:text-base mt-3.5 flex items-center gap-1.5 justify-center">
+          <p className="text-slate-500 font-medium text-sm sm:text-base mt-2 mb-4 flex items-center gap-1.5 justify-center">
             Only takes 10 seconds 👇
           </p>
+        </div>
+
+        {/* 2x2 Trust Badges Bar */}
+        <div className="bg-[#f28e43] py-3.5 px-6 border-t border-orange-400/20 text-white">
+          <div className="max-w-md mx-auto grid grid-cols-2 gap-x-6 gap-y-2.5 font-bold text-sm sm:text-base">
+            <div className="flex items-center gap-2.5">
+              <Star className="h-5 w-5 fill-white text-[#f28e43]" />
+              <span>Quality Guarantee</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <Clock className="h-5 w-5 stroke-[2.5px]" />
+              <span>Fast Quotes</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <ThumbsUp className="h-5 w-5 fill-white text-[#f28e43]" />
+              <span>No Hidden Fees</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <CheckCircle2 className="h-5 w-5 stroke-[2.5px]" />
+              <span>Licensed & Insured</span>
+            </div>
+          </div>
         </div>
       </header>
 
