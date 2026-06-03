@@ -1,22 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const PixelTracker = () => {
   const location = useLocation();
-  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // If it's the very first page load, index.html already fired the PageView event.
-    // We skip this call to avoid registering duplicate PageViews.
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
     if (typeof window !== "undefined" && typeof window.fbq === "function") {
+      console.log("Fired Meta Pixel 'PageView' event for route: " + location.pathname);
       window.fbq("track", "PageView");
+    } else {
+      console.warn("Meta Pixel (fbq) is not initialized on this page yet.");
     }
   }, [location.pathname, location.search]);
 
