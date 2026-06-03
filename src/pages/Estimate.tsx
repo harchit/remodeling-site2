@@ -18,6 +18,7 @@ function Estimate() {
   const [timeline, setTimeline] = useState("");
   const [withinRadius, setWithinRadius] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
+  const [city, setCity] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
@@ -58,7 +59,7 @@ function Estimate() {
       case 3:
         return withinRadius === "yes";
       case 4:
-        return streetAddress.trim() !== "" && /^\d{5}$/.test(zipCode);
+        return streetAddress.trim() !== "" && city.trim() !== "" && /^\d{5}$/.test(zipCode);
       case 5:
         const isPhoneValid = /^\(\d{3}\)\s\d{3}-\d{4}$/.test(phone);
         const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -106,6 +107,7 @@ function Estimate() {
     formData.append("Completion Target", timeline);
     formData.append("Within Radius of Phoenix", withinRadius);
     formData.append("Street Address", streetAddress);
+    formData.append("City", city);
     formData.append("Zip Code", zipCode);
     formData.append("First Name", firstName);
     formData.append("Phone Number", phone);
@@ -193,6 +195,7 @@ function Estimate() {
                 setTimeline("");
                 setWithinRadius("");
                 setStreetAddress("");
+                setCity("");
                 setZipCode("");
                 setFirstName("");
                 setPhone("");
@@ -345,7 +348,19 @@ function Estimate() {
                         placeholder="123 Camelback Rd"
                         value={streetAddress}
                         onChange={(e) => setStreetAddress(e.target.value)}
-                        className="rounded-xl py-6"
+                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="city" className="text-xs text-slate-500 font-bold uppercase mb-1 block">City</Label>
+                      <Input
+                        id="city"
+                        type="text"
+                        placeholder="Phoenix"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
                         required
                       />
                     </div>
@@ -363,7 +378,7 @@ function Estimate() {
                         maxLength={5}
                         value={zipCode}
                         onChange={handleZipChange}
-                        className="rounded-xl py-6"
+                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
                         required
                       />
                     </div>
@@ -387,7 +402,7 @@ function Estimate() {
                         placeholder="John"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
-                        className="rounded-xl py-6"
+                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
                         required
                       />
                     </div>
@@ -404,7 +419,7 @@ function Estimate() {
                         placeholder="(602) 555-0199"
                         value={phone}
                         onChange={handlePhoneChange}
-                        className="rounded-xl py-6"
+                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
                         required
                       />
                     </div>
@@ -416,7 +431,7 @@ function Estimate() {
                         placeholder="john@example.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="rounded-xl py-6"
+                        className="rounded-xl py-6 placeholder:italic placeholder:text-slate-400/80"
                         required
                       />
                     </div>
