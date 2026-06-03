@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Progress } from "@/components/ui/progress";
 import { showSuccess, showError } from "@/utils/toast";
 import { CheckCircle2, ChevronRight, ChevronLeft, AlertCircle, ArrowLeft, ShieldCheck, DollarSign, Zap, FileText } from "lucide-react";
 import logoImg from "@/assets/logo.jpg";
@@ -233,7 +232,14 @@ function Estimate() {
                 <span>Progress</span>
                 <span>Question {currentStep} of {totalSteps}</span>
               </div>
-              <Progress value={progressPercentage} className="h-2 bg-slate-100" />
+              
+              {/* Reliable Custom Progress Bar */}
+              <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                <div 
+                  className="bg-blue-600 h-full rounded-full transition-all duration-300 ease-out"
+                  style={{ width: `${progressPercentage}%` }}
+                />
+              </div>
             </div>
 
             <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
