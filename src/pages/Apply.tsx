@@ -210,12 +210,12 @@ function Apply() {
                   name="projectValue"
                 >
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="lt20k" id="pvUnder20" />
-                    <Label htmlFor="pvUnder20">Less than $20k</Label>
+                    <RadioGroupItem value="lt30k" id="pvUnder30" />
+                    <Label htmlFor="pvUnder30">Less than $30k</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="20k-50k" id="pv20to50" />
-                    <Label htmlFor="pv20to50">$20k to $50k</Label>
+                    <RadioGroupItem value="30k-50k" id="pv30to50" />
+                    <Label htmlFor="pv30to50">$30k to $50k</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="50k-100k" id="pv50to100" />
