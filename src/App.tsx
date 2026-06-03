@@ -12,6 +12,7 @@ import Cabinetry from "./pages/Cabinetry";
 import Countertops from "./pages/Countertops";
 import FullRemodels from "./pages/FullRemodels";
 import Apply from "./pages/Apply";
+import Estimate from "./pages/Estimate";
 import ScrollToTop from "./components/ScrollToTop";
 import PixelTracker from "./components/PixelTracker";
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/countertops" element={<Countertops />} />
           <Route path="/full-remodels" element={<FullRemodels />} />
           <Route path="/apply" element={<Apply />} />
+          <Route path="/estimate" element={<Estimate />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

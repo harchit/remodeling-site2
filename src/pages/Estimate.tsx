@@ -1,0 +1,418 @@
+"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { showSuccess, showError } from "@/utils/toast";
+import { CheckCircle2, ChevronRight, AlertCircle, ArrowLeft } from "lucide-react";
+import logoImg from "@/assets/logo.jpg";
+
+function Estimate() {
+  const [homeType, setHomeType] = useState("");
+  const [timeline, setTimeline] = useState("");
+  const [withinRadius, setWithinRadius] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Phone auto-formatter (xxx) xxx-xxxx
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value.replace(/\D/g, ""); // Keep digits only
+    let formatted = input;
+    
+    if (input.length > 0) {
+      if (input.length <= 3) {
+        formatted = `(${input}`;
+      } else if (input.length <= 6) {
+        formatted = `(${input.slice(0, 3)}) ${input.slice(3)}`;
+      } else {
+        formatted = `(${input.slice(0, 3)}) ${input.slice(3, 6)}-${input.slice(6, 10)}`;
+      }
+    }
+    setPhone(formatted);
+  };
+
+  // Zip validation (only digits, max 5 characters)
+  const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.replace(/\D/g, "").slice(0, 5);
+    setZipCode(val);
+  };
+
+  const isFormValid = () => {
+    const isZipValid = /^\d{5}$/.test(zipCode);
+    const isPhoneValid = /^\(\d{3}\)\s\d{3}-\d{4}$/.test(phone);
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    return (
+      homeType !== "" &&
+      timeline !== "" &&
+      withinRadius === "yes" &&
+      streetAddress.trim() !== "" &&
+      isZipValid &&
+      firstName.trim() !== "" &&
+      isPhoneValid &&
+      isEmailValid
+    );
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (withinRadius === "no") {
+      showError("Kindly exit the page. We currently only service within 40 miles of Phoenix, AZ.");
+      return;
+    }
+
+    if (!isFormValid()) {
+      showError("Please fill out all fields with valid information before submitting.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+    formData.append("_captcha", "false");
+    formData.append("_subject", "New Lead - FB Ads Kitchen Estimate Request");
+    formData.append("Home Type", homeType);
+    formData.append("Completion Target", timeline);
+    formData.append("Within Radius of Phoenix", withinRadius);
+    formData.append("Street Address", streetAddress);
+    formData.append("Zip Code", zipCode);
+    formData.append("First Name", firstName);
+    formData.append("Phone Number", phone);
+    formData.append("Email Address", email);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/harchit23@gmail.com", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        showSuccess("Estimate request sent successfully!");
+        
+        // Fire Facebook Lead event
+        if (typeof window.fbq === "function") {
+          console.log("Fired Meta Pixel 'Lead' event for FB Ads lead form.");
+          window.fbq("track", "Lead");
+        }
+
+        setIsSubmitted(true);
+      } else {
+        showError("Something went wrong. Please try again or call us directly.");
+      }
+    } catch (err) {
+      showError("Network error. Please try again or check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-between font-sans">
+      
+      {/* Header section with Centered non-redirect logo */}
+      <header className="bg-white border-b border-slate-100 py-6 px-4 shadow-sm">
+        <div className="max-w-xl mx-auto flex flex-col items-center text-center">
+          <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-blue-100 overflow-hidden mb-3 pointer-events-none select-none">
+            <img 
+              src={logoImg} 
+              alt="Asha Interiors Logo" 
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+            Get a <span className="text-blue-600">FREE Kitchen Remodel Estimate</span> For Your Property
+          </h1>
+          <p className="text-slate-500 font-medium text-sm sm:text-base mt-2 flex items-center gap-1.5 justify-center">
+            Only takes 10 seconds 👇
+          </p>
+        </div>
+      </header>
+
+      {/* Main Form Area */}
+      <main className="flex-grow py-8 px-4 max-w-xl w-full mx-auto flex flex-col justify-center">
+        {isSubmitted ? (
+          <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-xl text-center space-y-6 animate-in fade-in zoom-in-95 duration-500">
+            <div className="bg-green-100 p-4 rounded-full w-fit mx-auto">
+              <CheckCircle2 className="h-12 w-12 text-green-600" />
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-2xl font-bold text-slate-900">Request Confirmed!</h2>
+              <p className="text-slate-600 leading-relaxed text-base">
+                Thanks, <span className="font-bold text-slate-900">{firstName}</span>. Your details have been delivered to our kitchen estimating specialists.
+              </p>
+              <p className="text-slate-500 text-sm">
+                We'll reach out to schedule your free design session and formal price assessment shortly.
+              </p>
+            </div>
+            <div className="bg-blue-50 border border-blue-100 p-5 rounded-2xl text-left">
+              <p className="text-xs uppercase tracking-wider text-blue-700 font-bold mb-1">Need Immediate Support?</p>
+              <p className="text-slate-700 text-sm font-semibold mb-3">Call our estimator desk directly to fast-track your pricing quote.</p>
+              <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-5 text-sm font-bold">
+                <a href="tel:2819326994">Call (281) 932-6994</a>
+              </Button>
+            </div>
+            <Button 
+              variant="link" 
+              onClick={() => {
+                setIsSubmitted(false);
+                setHomeType("");
+                setTimeline("");
+                setWithinRadius("");
+                setStreetAddress("");
+                setZipCode("");
+                setFirstName("");
+                setPhone("");
+                setEmail("");
+              }}
+              className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2 mx-auto"
+            >
+              <ArrowLeft className="h-4 w-4" /> Start Over
+            </Button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-xl space-y-8">
+            
+            {/* Field 1: Home Description */}
+            <div className="space-y-4">
+              <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">1</span>
+                Which best describes your home?
+              </Label>
+              <RadioGroup
+                value={homeType}
+                onValueChange={setHomeType}
+                className="grid grid-cols-1 gap-2.5"
+              >
+                {[
+                  { value: "single-family", label: "Single family home" },
+                  { value: "townhouse-duplex", label: "Townhouse or duplex" },
+                  { value: "mobile-other", label: "Mobile home or other" },
+                  { value: "commercial", label: "Commercial building" }
+                ].map((item) => (
+                  <label
+                    key={item.value}
+                    htmlFor={`home-${item.value}`}
+                    className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                      homeType === item.value 
+                        ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                        : "border-slate-200 hover:bg-slate-50"
+                    }`}
+                  >
+                    <RadioGroupItem value={item.value} id={`home-${item.value}`} />
+                    <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
+                  </label>
+                ))}
+              </RadioGroup>
+            </div>
+
+            {/* Field 2: Completed Timeline */}
+            <div className="space-y-4">
+              <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">2</span>
+                When are you hoping to have this project completed?
+              </Label>
+              <RadioGroup
+                value={timeline}
+                onValueChange={setTimeline}
+                className="grid grid-cols-2 gap-2.5"
+              >
+                {[
+                  { value: "asap", label: "ASAP" },
+                  { value: "this-month", label: "This month" },
+                  { value: "next-month", label: "Next month" },
+                  { value: "no-preference", label: "No preference" }
+                ].map((item) => (
+                  <label
+                    key={item.value}
+                    htmlFor={`time-${item.value}`}
+                    className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                      timeline === item.value 
+                        ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                        : "border-slate-200 hover:bg-slate-50"
+                    }`}
+                  >
+                    <RadioGroupItem value={item.value} id={`time-${item.value}`} />
+                    <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
+                  </label>
+                ))}
+              </RadioGroup>
+            </div>
+
+            {/* Field 3: 40-mile service eligibility */}
+            <div className="space-y-4">
+              <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">3</span>
+                Are you within a 40-mile distance from Phoenix, AZ?
+              </Label>
+              <RadioGroup
+                value={withinRadius}
+                onValueChange={setWithinRadius}
+                className="grid grid-cols-2 gap-2.5"
+              >
+                {[
+                  { value: "yes", label: "Yes" },
+                  { value: "no", label: "No" }
+                ].map((item) => (
+                  <label
+                    key={item.value}
+                    htmlFor={`radius-${item.value}`}
+                    className={`flex items-center space-x-3 border rounded-xl p-4 cursor-pointer transition-all ${
+                      withinRadius === item.value 
+                        ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                        : "border-slate-200 hover:bg-slate-50"
+                    }`}
+                  >
+                    <RadioGroupItem value={item.value} id={`radius-${item.value}`} />
+                    <span className="font-medium text-slate-700 text-sm sm:text-base">{item.label}</span>
+                  </label>
+                ))}
+              </RadioGroup>
+              
+              {withinRadius === "no" && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex gap-3 text-red-800 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <AlertCircle className="h-5 w-5 text-red-600 shrink-0 mt-0.5" />
+                  <p className="text-sm leading-relaxed">
+                    <strong>Kindly exit this page.</strong> We currently only offer professional kitchen remodeling services within 40 miles of Phoenix, AZ. Thank you!
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {withinRadius === "yes" && (
+              <div className="space-y-6 pt-2 border-t border-slate-100 animate-in fade-in slide-in-from-top-4 duration-500">
+                
+                {/* Field 4: Project Address */}
+                <div className="space-y-4">
+                  <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">4</span>
+                    What is the address of this project?
+                  </Label>
+                  <div className="space-y-3">
+                    <div>
+                      <Label htmlFor="street" className="text-xs text-slate-500 font-bold uppercase mb-1 block">Street Address</Label>
+                      <Input
+                        id="street"
+                        type="text"
+                        placeholder="123 Camelback Rd"
+                        value={streetAddress}
+                        onChange={(e) => setStreetAddress(e.target.value)}
+                        className="rounded-xl py-6"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <div className="flex justify-between items-center mb-1">
+                        <Label htmlFor="zip" className="text-xs text-slate-500 font-bold uppercase block">Zip Code</Label>
+                        {zipCode && zipCode.length < 5 && (
+                          <span className="text-xs text-amber-600 font-medium">Must be 5 digits</span>
+                        )}
+                      </div>
+                      <Input
+                        id="zip"
+                        type="text"
+                        placeholder="85001"
+                        maxLength={5}
+                        value={zipCode}
+                        onChange={handleZipChange}
+                        className="rounded-xl py-6"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Field 5: Contact Details */}
+                <div className="space-y-4 pt-2 border-t border-slate-100">
+                  <Label className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">5</span>
+                    What's your name, cell phone, and email address?
+                  </Label>
+                  <div className="space-y-3">
+                    <div>
+                      <Label htmlFor="fname" className="text-xs text-slate-500 font-bold uppercase mb-1 block">First Name</Label>
+                      <Input
+                        id="fname"
+                        type="text"
+                        placeholder="John"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        className="rounded-xl py-6"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <div className="flex justify-between items-center mb-1">
+                        <Label htmlFor="phoneField" className="text-xs text-slate-500 font-bold uppercase block">Phone Number</Label>
+                        {phone && phone.length < 14 && (
+                          <span className="text-xs text-amber-600 font-medium">Use format: (xxx) xxx-xxxx</span>
+                        )}
+                      </div>
+                      <Input
+                        id="phoneField"
+                        type="tel"
+                        placeholder="(602) 555-0199"
+                        value={phone}
+                        onChange={handlePhoneChange}
+                        className="rounded-xl py-6"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="emailField" className="text-xs text-slate-500 font-bold uppercase mb-1 block">Email Address</Label>
+                      <Input
+                        id="emailField"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="rounded-xl py-6"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting || !isFormValid()}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-8 text-lg font-extrabold shadow-lg shadow-blue-200 transition-all active:scale-95 flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:pointer-events-none"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Sending Lead Detail...
+                    </>
+                  ) : (
+                    <>
+                      Submit Request
+                      <ChevronRight className="h-5 w-5" />
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
+          </form>
+        )}
+      </main>
+
+      {/* Simplified Footer block */}
+      <footer className="bg-white border-t border-slate-100 py-6 px-4 text-center">
+        <p className="text-slate-400 text-xs font-semibold tracking-wider">
+          Copyright 2026, Asha Interiors, All Rights Reserved
+        </p>
+      </footer>
+
+    </div>
+  );
+}
+
+export default Estimate;
