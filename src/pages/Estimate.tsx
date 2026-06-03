@@ -179,13 +179,6 @@ function Estimate() {
                 We'll reach out to schedule your free design session and formal price assessment shortly.
               </p>
             </div>
-            <div className="bg-blue-50 border border-blue-100 p-5 rounded-2xl text-left">
-              <p className="text-xs uppercase tracking-wider text-blue-700 font-bold mb-1">Need Immediate Support?</p>
-              <p className="text-slate-700 text-sm font-semibold mb-3">Call our estimator desk directly to fast-track your pricing quote.</p>
-              <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-5 text-sm font-bold">
-                <a href="tel:2819326994">Call (281) 932-6994</a>
-              </Button>
-            </div>
             <Button 
               variant="link" 
               onClick={() => {
