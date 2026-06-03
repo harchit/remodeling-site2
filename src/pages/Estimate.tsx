@@ -122,10 +122,14 @@ function Estimate() {
       if (response.ok) {
         showSuccess("Estimate request sent successfully!");
         
-        // Fire Facebook Lead event
+        // Fire Facebook Lead event with valuable tracking parameters
         if (typeof window.fbq === "function") {
-          console.log("Fired Meta Pixel 'Lead' event for FB Ads lead form.");
-          window.fbq("track", "Lead");
+          console.log("Fired Meta Pixel 'Lead' event for FB Ads lead form with parameters.");
+          window.fbq("track", "Lead", {
+            content_category: "Kitchen Remodeling Estimate",
+            content_name: `${homeType} - ${timeline}`,
+            status: "New Lead Submission"
+          });
         }
 
         setIsSubmitted(true);
