@@ -132,12 +132,37 @@ function Estimate() {
     formData.append("Email Address", email);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/harchit23@gmail.com", {
+      // 1. Submit email form to FormSubmit
+      const formSubmitPromise = fetch("https://formsubmit.co/ajax/harchit23@gmail.com", {
         method: "POST",
         body: formData,
       });
 
-      if (response.ok) {
+      // 2. Submit lead details to Make.com Webhook
+      const webhookPayload = {
+        firstName,
+        phone,
+        email,
+        zipCode,
+        homeType,
+        timeline,
+        withinRadius,
+        source: "FB Ads Kitchen Estimate Request",
+        submittedAt: new Date().toISOString()
+      };
+
+      const makeWebhookPromise = fetch("https://hook.us1.make.com/wouiga6kue9qwht64ypky1m1dk4d8usr", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(webhookPayload)
+      });
+
+      // Wait for both requests to complete
+      const [formResponse] = await Promise.all([formSubmitPromise, makeWebhookPromise.catch(e => console.error("Make Webhook error:", e))]);
+
+      if (formResponse && formResponse.ok) {
         showSuccess("Estimate request sent successfully!");
         
         // Fire Facebook Lead event with valuable tracking parameters
