@@ -171,8 +171,8 @@ function Estimate() {
         className="relative bg-cover bg-center py-10 px-4 shadow-md border-b border-slate-200/20"
         style={{ backgroundImage: `url(${kitchenBg})` }}
       >
-        {/* Dark Overlay to make white text extremely legible */}
-        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[1px]" />
+        {/* Softened Dark Overlay to make white text legible while letting the custom background shine through */}
+        <div className="absolute inset-0 bg-slate-900/45 backdrop-blur-[0.5px]" />
 
         <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center text-center">
           <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-white/20 overflow-hidden mb-4 pointer-events-none select-none shadow-lg">
@@ -182,8 +182,8 @@ function Estimate() {
               className="w-full h-full object-cover scale-110"
             />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight drop-shadow-sm">
-            Get a <span className="text-blue-400">FREE Kitchen Remodel Estimate</span> For Your Property
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight drop-shadow-md">
+            Get a <span className="text-blue-300">FREE Kitchen Remodel Estimate</span> For Your Property
           </h1>
           
           {/* Trust Badges Row */}
