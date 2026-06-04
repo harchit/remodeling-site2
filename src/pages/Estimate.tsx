@@ -263,8 +263,7 @@ function Estimate() {
               {/* STEP 1: Home Type */}
               {currentStep === 1 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">1</span>
+                  <Label className="text-base sm:text-lg font-bold text-slate-900">
                     Which best describes your home?
                   </Label>
                   <div className="grid grid-cols-1 gap-2.5">
@@ -295,8 +294,7 @@ function Estimate() {
               {/* STEP 2: Timeline */}
               {currentStep === 2 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">2</span>
+                  <Label className="text-base sm:text-lg font-bold text-slate-900">
                     When are you hoping to have this project completed?
                   </Label>
                   <div className="grid grid-cols-1 gap-2.5">
@@ -327,8 +325,7 @@ function Estimate() {
               {/* STEP 3: Within Radius */}
               {currentStep === 3 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">3</span>
+                  <Label className="text-base sm:text-lg font-bold text-slate-900">
                     Are you within a 40-mile distance from Phoenix, AZ?
                   </Label>
                   <div className="grid grid-cols-2 gap-2.5">
@@ -366,8 +363,7 @@ function Estimate() {
               {/* STEP 4: Project Zip Code */}
               {currentStep === 4 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">4</span>
+                  <Label className="text-base sm:text-lg font-bold text-slate-900">
                     What is your zip code?
                   </Label>
                   <div className="space-y-3">
@@ -396,8 +392,7 @@ function Estimate() {
               {/* STEP 5: Name and Contact */}
               {currentStep === 5 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                  <Label className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">5</span>
+                  <Label className="text-base sm:text-lg font-bold text-slate-900">
                     What's your name, cell phone, and email address?
                   </Label>
                   <div className="space-y-3">
