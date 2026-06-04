@@ -393,7 +393,7 @@ function Estimate() {
               {currentStep === 5 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
                   <Label className="text-base sm:text-lg font-bold text-slate-900">
-                    What's your name, cell phone, and email address?
+                    Enter your contact so we can reach out ASAP
                   </Label>
                   <div className="space-y-3">
                     <div>
