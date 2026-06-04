@@ -171,8 +171,8 @@ function Estimate() {
         className="relative bg-cover bg-center py-10 px-4 shadow-md border-b border-slate-200/20"
         style={{ backgroundImage: `url(${kitchenBg})` }}
       >
-        {/* Softened Dark Overlay to make white text legible while letting the custom background shine through */}
-        <div className="absolute inset-0 bg-slate-900/45 backdrop-blur-[0.5px]" />
+        {/* Softened Dark Overlay perfectly balanced for the new kitchen photo */}
+        <div className="absolute inset-0 bg-slate-950/35 backdrop-blur-[0.5px]" />
 
         <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center text-center">
           <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-white/20 overflow-hidden mb-4 pointer-events-none select-none shadow-lg">
@@ -188,25 +188,25 @@ function Estimate() {
           
           {/* Trust Badges Row */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-5 max-w-lg">
-            <span className="inline-flex items-center gap-1 bg-white/10 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 bg-white/15 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
               <ShieldCheck className="h-3.5 w-3.5 text-blue-300" />
               Quality guarantee
             </span>
-            <span className="inline-flex items-center gap-1 bg-white/10 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 bg-white/15 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
               <DollarSign className="h-3.5 w-3.5 text-blue-300" />
               No hidden fees
             </span>
-            <span className="inline-flex items-center gap-1 bg-white/10 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 bg-white/15 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
               <Zap className="h-3.5 w-3.5 text-blue-300" />
               Fast quotes
             </span>
-            <span className="inline-flex items-center gap-1 bg-white/10 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 bg-white/15 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
               <FileText className="h-3.5 w-3.5 text-blue-300" />
               Licensed and insured
             </span>
           </div>
 
-          <p className="text-slate-300 font-semibold text-sm sm:text-base mt-4 flex items-center gap-1.5 justify-center">
+          <p className="text-slate-200 font-semibold text-sm sm:text-base mt-4 flex items-center gap-1.5 justify-center">
             Only takes 10 seconds 👇
           </p>
         </div>
