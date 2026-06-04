@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { showSuccess, showError } from "@/utils/toast";
 import { CheckCircle2, ChevronRight, ChevronLeft, AlertCircle, ArrowLeft, ShieldCheck, DollarSign, Zap, FileText } from "lucide-react";
 import logoImg from "@/assets/logo.jpg";
+import kitchenBg from "@/assets/kitchen-bg.jpg";
 
 function Estimate() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -165,41 +166,47 @@ function Estimate() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between font-sans">
       
-      {/* Header section with Centered non-redirect logo and trust banners */}
-      <header className="bg-white border-b border-slate-100 py-6 px-4 shadow-sm">
-        <div className="max-w-xl mx-auto flex flex-col items-center text-center">
-          <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-blue-100 overflow-hidden mb-3 pointer-events-none select-none">
+      {/* Header section with Background Image, Overlay and Centered non-redirect logo */}
+      <header 
+        className="relative bg-cover bg-center py-10 px-4 shadow-md border-b border-slate-200/20"
+        style={{ backgroundImage: `url(${kitchenBg})` }}
+      >
+        {/* Dark Overlay to make white text extremely legible */}
+        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[1px]" />
+
+        <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center text-center">
+          <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center border-2 border-white/20 overflow-hidden mb-4 pointer-events-none select-none shadow-lg">
             <img 
               src={logoImg} 
               alt="Asha Interiors Logo" 
               className="w-full h-full object-cover scale-110"
             />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-            Get a <span className="text-blue-600">FREE Kitchen Remodel Estimate</span> For Your Property
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight drop-shadow-sm">
+            Get a <span className="text-blue-400">FREE Kitchen Remodel Estimate</span> For Your Property
           </h1>
           
           {/* Trust Badges Row */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-4 max-w-lg">
-            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
-              <ShieldCheck className="h-3.5 w-3.5 text-green-600" />
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-5 max-w-lg">
+            <span className="inline-flex items-center gap-1 bg-white/10 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
+              <ShieldCheck className="h-3.5 w-3.5 text-blue-300" />
               Quality guarantee
             </span>
-            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
-              <DollarSign className="h-3.5 w-3.5 text-green-600" />
+            <span className="inline-flex items-center gap-1 bg-white/10 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
+              <DollarSign className="h-3.5 w-3.5 text-blue-300" />
               No hidden fees
             </span>
-            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
-              <Zap className="h-3.5 w-3.5 text-green-600" />
+            <span className="inline-flex items-center gap-1 bg-white/10 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
+              <Zap className="h-3.5 w-3.5 text-blue-300" />
               Fast quotes
             </span>
-            <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-100">
-              <FileText className="h-3.5 w-3.5 text-green-600" />
+            <span className="inline-flex items-center gap-1 bg-white/10 text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/10 backdrop-blur-sm">
+              <FileText className="h-3.5 w-3.5 text-blue-300" />
               Licensed and insured
             </span>
           </div>
 
-          <p className="text-slate-500 font-medium text-sm sm:text-base mt-3.5 flex items-center gap-1.5 justify-center">
+          <p className="text-slate-300 font-semibold text-sm sm:text-base mt-4 flex items-center gap-1.5 justify-center">
             Only takes 10 seconds 👇
           </p>
         </div>
