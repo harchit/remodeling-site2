@@ -112,9 +112,9 @@ const Cabinetry = () => {
             Our Arizona team is ready to help you choose the perfect wood, finish, and layout for your kitchen.
           </p>
           <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-slate-100 rounded-full px-10 py-8 text-xl">
-            <a href="tel:2819326994" className="flex items-center gap-3">
+            <a href="tel:4807426827" className="flex items-center gap-3">
               <Phone className="h-6 w-6" />
-              Call (281) 932-6994
+              Call (480) 742-6827
             </a>
           </Button>
         </div>

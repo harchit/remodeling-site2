@@ -182,7 +182,7 @@ function Apply() {
                   asChild
                   className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6 px-8 text-base font-bold shadow-lg shadow-blue-200"
                 >
-                  <a href="tel:2819326994" className="flex items-center gap-2">
+                  <a href="tel:4807426827" className="flex items-center gap-2">
                     <Phone className="h-4 w-4 animate-pulse" />
                     Call Hiring Team Now
                   </a>
@@ -369,7 +369,7 @@ function Apply() {
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="(555) 123-4567"
+                    placeholder="(480) 742-6827"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="rounded-xl py-6 max-w-md"
@@ -443,9 +443,9 @@ function Apply() {
             size="lg"
             className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 py-8 text-xl"
           >
-            <a href="tel:2819326994" className="flex items-center gap-3">
+            <a href="tel:4807426827" className="flex items-center gap-3">
               <Phone className="h-6 w-6" />
-              (281) 932-6994
+              (480) 742-6827
             </a>
           </Button>
         </div>
